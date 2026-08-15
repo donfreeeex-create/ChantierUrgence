@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      // Defensive fetch setter to prevent errors from fetch polyfills (like whatwg-fetch)
+      // in environments where window.fetch is a getter only.
+      try {
+        const desc = Object.getOwnPropertyDescriptor(window, 'fetch');
+        if (desc && !desc.set && desc.configurable) {
+          Object.defineProperty(window, 'fetch', {
+            get: desc.get || (() => desc.value),
+            set: function(v) { console.warn('Ignored attempt to set window.fetch'); },
+            configurable: true,
+            enumerable: desc.enumerable
+          });
+        }
+      } catch (e) {}
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- SEO Primary Meta Tags -->
+    <title>Location Engins de Chantier Urgence | Tractopelle, Poclain, Manitou, Foreuse</title>
+    <meta name="title" content="Location Engins de Chantier Urgence | Tractopelle, Poclain, Manitou, Foreuse" />
+    <meta name="description" content="Location d'urgence d'engins de chantier (JCB, Poclain, Manitou, Caterpillar, Clark, Tractopelle) et foreuse de puits à Had Soualem, El Jadida, Berrechid et environs. Avec ou sans chauffeur, intervention en 10 minutes." />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="French" />
+
+    <!-- Open Graph / Facebook / WhatsApp (عند مشاركة الرابط) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://chantierurgence.com/" />
+    <meta property="og:title" content="ChantierUrgence - Location d'Engins de Chantier en Urgence" />
+    <meta property="og:description" content="Machine en panne ? Trouvez un Tractopelle, Poclain, Manitou, Clark, Caterpillar ou une Foreuse disponible en moins de 10 minutes." />
+    <meta property="og:image" content="https://chantierurgence.com/og-image.jpg" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "additionalType": "https://schema.org/EmergencyService",
+      "name": "ChantierUrgence",
+      "image": "https://chantierurgence.com/logo.png",
+      "description": "Service de dispatching et location d'urgence pour engins de chantier : Tractopelle, JCB, Poclain, Manitou, Clark, Caterpillar, et foreuses de puits.",
+      "areaServed": [
+        "Had Soualem",
+        "Bir Jdid",
+        "Azemmour",
+        "Chtouka",
+        "El Jadida",
+        "Settat",
+        "Berrechid"
+      ],
+      "serviceType": [
+        "Location Tractopelle",
+        "Location JCB",
+        "Location Poclain",
+        "Location Manitou",
+        "Location Clark",
+        "Location Caterpillar",
+        "Location Foreuse de Puits"
+      ],
+      "telephone": "+212718187543",
+      "priceRange": "$$",
+      "openingHours": "Mo-Sa 07:00-19:00",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 33.4111,
+        "longitude": -7.8425
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
