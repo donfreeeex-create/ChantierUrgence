@@ -173,6 +173,35 @@ export default function App() {
               Commander une Foreuse
             </a>
           </section>
+
+          {/* Section : Qui sommes-nous ? - ChantierUrgence */}
+          <section className="py-12 px-4 text-gray-800">
+            <h2 className="text-2xl font-bold mb-4 text-gray-900">Qui sommes-nous ? - ChantierUrgence</h2>
+            <p className="leading-relaxed mb-6">
+              ChantierUrgence est la plateforme de référence au Maroc pour la mise en relation rapide entre les chantiers en panne et les propriétaires d'engins BTP disponibles. Actifs sur l'axe stratégique de Had Soualem, Jorf Lasfar, Bir Jdid, Azemmour, El Jadida, Chtouka, Settat, Berrechid et Sidi Rahal, nous vous connectons avec la machine .
+            </p>
+
+            <h3 className="text-xl font-bold mb-3 text-gray-900">Nos Services &amp; Engins disponibles :</h3>
+            <ul className="space-y-3 mb-6">
+              <li>
+                <strong>Location Tractopelle &amp; JCB :</strong> Pour le dépannage rapide, le terrassement et vos travaux de base (حفير الساس).
+              </li>
+              <li>
+                <strong>Location Poclain &amp; Caterpillar :</strong> Pelle mécanique sur chenille pour les travaux lourds, l'extraction et le gros œuvre (كراء بوكلان).
+              </li>
+              <li>
+                <strong>Location Manitou &amp; Clark :</strong> Chariot télescopique (de 12m à 21m, avec ou sans chauffeur) et chariot élévateur pour le levage et la manutention industrielle.
+              </li>
+              <li>
+                <strong>Location de Foreuse (Forage d'eau) :</strong> Sondage de puits (حفير البير) pour les particuliers et agriculteurs, foreuse horizontale pour le passage de câbles et canalisations, et foreuse à trou pour poteaux.
+              </li>
+            </ul>
+
+            <h3 className="text-xl font-bold mb-3 text-gray-900">Pourquoi nous choisir ?</h3>
+            <p className="leading-relaxed">
+              Pas de frais d'avance, pas de formulaire interminable. Dans le secteur du BTP, le temps c'est de l'argent. Un simple appel téléphonique suffit pour trouver l'engin qu'il vous faut et déclencher une intervention immédiate, où que vous soyez sur votre chantier.
+            </p>
+          </section>
         </div>
       </main>
 
