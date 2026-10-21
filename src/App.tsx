@@ -25,10 +25,10 @@ export default function App() {
         </div>
         <a 
           href={`tel:${phoneNumber}`} 
-          className="bg-yellow-500 text-black px-4 py-2 rounded-md font-bold flex items-center gap-2 animate-pulse shadow-sm active:scale-95 transition-transform"
+          className="bg-yellow-500 hover:bg-yellow-400 text-black px-4 py-2 rounded-md font-bold text-sm sm:text-base flex items-center gap-2 shadow-sm active:scale-95 transition-all"
         >
-          <Phone size={18} fill="currentColor" />
-          <span className="hidden sm:inline">Appeler</span>
+          <Phone size={16} fill="currentColor" />
+          <span>+212 718-187543</span>
         </a>
       </header>
 
@@ -236,8 +236,25 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-gray-500 text-center py-8 px-4 text-sm pb-24">
-        <p>© 2026 ChantierUrgence. Service de mise en relation d'urgence.</p>
+      <footer className="bg-black text-gray-400 text-center py-10 px-4 text-sm pb-24 border-t border-gray-800">
+        <div className="max-w-md mx-auto space-y-3">
+          <div className="flex items-center justify-center gap-2 text-white font-bold text-base">
+            <Phone size={18} className="text-yellow-500" fill="currentColor" />
+            <span>Contact téléphonique :</span>
+            <a 
+              href={`tel:${phoneNumber}`} 
+              className="text-yellow-400 hover:text-yellow-300 font-extrabold text-lg tracking-wider"
+            >
+              +212 718-187543
+            </a>
+          </div>
+          <p className="text-gray-400 text-xs">
+            Disponible 24/7 pour toute demande de location et intervention d'urgence.
+          </p>
+          <p className="text-gray-600 text-xs pt-2">
+            © 2026 ChantierUrgence. Service de mise en relation d'urgence.
+          </p>
+        </div>
       </footer>
 
       {/* Floating Call Button for immediate access anywhere */}
