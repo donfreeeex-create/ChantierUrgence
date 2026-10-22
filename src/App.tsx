@@ -18,17 +18,17 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col font-sans selection:bg-yellow-300">
       {/* Sticky Header */}
-      <header className="sticky top-0 z-50 bg-white shadow-md border-b-4 border-yellow-500 px-4 py-3 flex justify-between items-center">
-        <div className="flex items-center gap-2 text-gray-900 font-extrabold text-lg tracking-tight">
-          <AlertTriangle className="text-yellow-500" size={24} strokeWidth={2.5} />
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm border-b-4 border-yellow-500 px-3 sm:px-6 py-2.5 sm:py-3 flex justify-between items-center transition-all">
+        <div className="flex items-center gap-1.5 sm:gap-2 text-gray-900 font-extrabold text-base sm:text-lg tracking-tight shrink-0">
+          <AlertTriangle className="text-yellow-500 shrink-0" size={22} strokeWidth={2.5} />
           <span>ChantierUrgence</span>
         </div>
         <a 
           href={`tel:${phoneNumber}`} 
-          className="bg-yellow-500 hover:bg-yellow-400 text-black px-4 py-2 rounded-md font-bold text-sm sm:text-base flex items-center gap-2 shadow-sm active:scale-95 transition-all"
+          className="bg-yellow-500 hover:bg-yellow-400 text-black px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg font-bold text-xs sm:text-sm md:text-base flex items-center gap-1.5 sm:gap-2 shadow-sm active:scale-95 transition-all whitespace-nowrap shrink-0"
         >
-          <Phone size={16} fill="currentColor" />
-          <span>+212 718-187543</span>
+          <Phone size={15} fill="currentColor" className="shrink-0" />
+          <span className="tabular-nums tracking-tight font-black">+212 718-187543</span>
         </a>
       </header>
 
@@ -236,14 +236,16 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-gray-400 text-center py-10 px-4 text-sm pb-24 border-t border-gray-800">
+      <footer className="bg-black text-gray-400 text-center py-8 sm:py-10 px-4 text-sm pb-24 border-t border-gray-800">
         <div className="max-w-md mx-auto space-y-3">
-          <div className="flex items-center justify-center gap-2 text-white font-bold text-base">
-            <Phone size={18} className="text-yellow-500" fill="currentColor" />
-            <span>Contact téléphonique :</span>
+          <div className="inline-flex flex-wrap items-center justify-center gap-2 text-white font-medium text-sm sm:text-base bg-gray-900/80 px-4 py-2.5 rounded-xl border border-gray-800">
+            <span className="flex items-center gap-1.5 text-gray-300">
+              <Phone size={16} className="text-yellow-500" fill="currentColor" />
+              <span>Contact :</span>
+            </span>
             <a 
               href={`tel:${phoneNumber}`} 
-              className="text-yellow-400 hover:text-yellow-300 font-extrabold text-lg tracking-wider"
+              className="text-yellow-400 hover:text-yellow-300 font-extrabold text-base sm:text-lg tracking-wider whitespace-nowrap tabular-nums"
             >
               +212 718-187543
             </a>
@@ -251,7 +253,7 @@ export default function App() {
           <p className="text-gray-400 text-xs">
             Disponible 24/7 pour toute demande de location et intervention d'urgence.
           </p>
-          <p className="text-gray-600 text-xs pt-2">
+          <p className="text-gray-600 text-xs pt-1">
             © 2026 ChantierUrgence. Service de mise en relation d'urgence.
           </p>
         </div>
