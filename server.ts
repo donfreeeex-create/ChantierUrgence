@@ -16,17 +16,17 @@ dotenv.config();
 const isProd = process.env.NODE_ENV === "production";
 
 // ==========================================
-// 🚩 FIX #1: توقف السيرفر ما يبداش إذا الأسرار الحقيقية ناقصة
+// 🚩 FIX #1: الأسرار وحماية البيئة
 // ==========================================
-if (!process.env.JWT_SECRET || !process.env.REFRESH_TOKEN_SECRET) {
-  throw new Error(
-    "FATAL: JWT_SECRET and REFRESH_TOKEN_SECRET must be defined in your environment or .env file. " +
-    "Server refusing to start without secure keys."
-  );
-}
+const JWT_SECRET = process.env.JWT_SECRET || (isProd 
+  ? (() => { throw new Error("FATAL: JWT_SECRET must be defined in production environment."); })()
+  : "dev-fallback-jwt-secret-chantierurgence-36483449-9892-4b42-8e94"
+);
 
-const JWT_SECRET = process.env.JWT_SECRET;
-const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET;
+const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET || (isProd
+  ? (() => { throw new Error("FATAL: REFRESH_TOKEN_SECRET must be defined in production environment."); })()
+  : "dev-fallback-refresh-token-secret-chantierurgence-36483449-9892-4b42-8e94"
+);
 
 // In-memory store for refresh tokens
 // ⚠️ ملاحظة: هادشي كيخدم لسيرفر واحد بلا Restart. إيلا عاودتي تشغيل السيرفر
@@ -137,7 +137,7 @@ async function startServer() {
   // وحدو ما كيمنعش حد ينسى ويرفع الكود هكاك لسيرفر حقيقي. هاد الفحص
   // كيرفض يخلي السيرفر يبدا إذا حسيت الباسوورد الافتراضي بقى فالكود.
   // ==========================================
-  const USING_PLACEHOLDER_AUTH = false; // 👈 بدلها لـ false ملي تربط قاعدة بيانات حقيقية
+  const USING_PLACEHOLDER_AUTH = true; // 👈 بدلها لـ false ملي تربط قاعدة بيانات حقيقية
   if (isProd && USING_PLACEHOLDER_AUTH) {
     throw new Error(
       "FATAL: نظام الدخول لسه كيستعمل username/password مكتوبين فالكود (placeholder). " +
@@ -240,9 +240,19 @@ async function startServer() {
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath));
+    app.use(express.static(distPath, { redirect: false }));
     app.get("*", (req, res) => {
-      res.sendFile(path.join(distPath, "index.html"));
+      const cleanReqPath = req.path.replace(/^\/+|\/+$/g, "");
+      if (cleanReqPath) {
+        const candidateHtml = path.join(distPath, cleanReqPath, "index.html");
+        res.sendFile(candidateHtml, (err) => {
+          if (err) {
+            res.sendFile(path.join(distPath, "index.html"));
+          }
+        });
+      } else {
+        res.sendFile(path.join(distPath, "index.html"));
+      }
     });
   }
 
