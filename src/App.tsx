@@ -54,6 +54,9 @@ export default function App({ initialPath }: AppProps) {
     setMetaTag('meta[property="og:description"]', 'content', routeMeta.description);
     setMetaTag('meta[name="twitter:title"]', 'content', routeMeta.title);
     setMetaTag('meta[name="twitter:description"]', 'content', routeMeta.description);
+    setMetaTag('meta[name="geo.placename"]', 'content', routeMeta.geoPlacename);
+    setMetaTag('meta[name="geo.position"]', 'content', routeMeta.geoPosition);
+    setMetaTag('meta[name="ICBM"]', 'content', routeMeta.geoPosition.replace(';', ', '));
 
     const schemaScript = document.getElementById('json-ld-schema') || document.querySelector('script[type="application/ld+json"]');
     if (schemaScript) {
@@ -696,9 +699,9 @@ export default function App({ initialPath }: AppProps) {
           </div>
 
           <div>
-            <h3 className="text-white font-bold mb-3">Zones d'Intervention Rapide</h3>
+            <h3 className="text-white font-bold mb-3">Zones d'Intervention — Région Casablanca-Settat</h3>
             <p className="leading-relaxed mb-3">
-              Service de dispatching actif à <strong>Had Soualem</strong>, <strong>Bir Jdid</strong>, <strong>Azemmour</strong>, <strong>Chtouka</strong>, <strong>El Jadida</strong>, <strong>Settat</strong> et <strong>Berrechid</strong>.
+              Service de dispatching actif sur toute la <strong>Région Casablanca-Settat</strong> : <strong>Casablanca</strong>, <strong>Had Soualem</strong>, <strong>Province de Berrechid</strong> (Berrechid, Deroua, Sidi Rahal), <strong>Province de Settat</strong> (Settat, Ben Ahmed) et <strong>Région d'El Jadida</strong> (El Jadida, Jorf Lasfar, Azemmour, Bir Jdid, Chtouka).
             </p>
             <div className="flex flex-wrap gap-1.5">
               {CITIES.map((c) => {

@@ -65,6 +65,18 @@ async function prerender() {
       `<meta name="twitter:description" content="${escapedDesc}" />`
     );
     html = html.replace(
+      /<meta name="geo\.placename" content="[^"]*" \/>/,
+      `<meta name="geo.placename" content="${escapeHtmlAttr(meta.geoPlacename)}" />`
+    );
+    html = html.replace(
+      /<meta name="geo\.position" content="[^"]*" \/>/,
+      `<meta name="geo.position" content="${escapeHtmlAttr(meta.geoPosition)}" />`
+    );
+    html = html.replace(
+      /<meta name="ICBM" content="[^"]*" \/>/,
+      `<meta name="ICBM" content="${escapeHtmlAttr(meta.geoPosition.replace(';', ', '))}" />`
+    );
+    html = html.replace(
       /<script id="json-ld-schema" type="application\/ld\+json">[\s\S]*?<\/script>/,
       `<script id="json-ld-schema" type="application/ld+json">\n${JSON.stringify(meta.jsonLd, null, 2)}\n    </script>`
     );
@@ -81,7 +93,7 @@ async function prerender() {
   console.log(`Successfully pre-rendered ${routes.length} static SEO routes into dist/`);
 
   // Automatically generate and write updated sitemap.xml to both public/ and dist/
-  const today = '2026-10-23';
+  const today = '2026-10-24';
   const sitemapEntries = routes
     .map((route) => {
       const loc = route === '/' ? 'https://www.chantierurgence.com/' : `https://www.chantierurgence.com${route}`;
