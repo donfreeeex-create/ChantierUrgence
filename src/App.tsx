@@ -256,7 +256,7 @@ export default function App({ initialPath }: AppProps) {
                     <a href={`tel:${phoneNumber}`} className="font-bold text-gray-900 underline">
                       +212 718-187543
                     </a>{' '}
-                    suffit pour déclencher le départ de l'engin en moins de 10 minutes.
+                    suffit pour déclencher le départ immédiat de l'engin.
                   </p>
                 ) : (
                   <p className="text-gray-700 leading-relaxed mb-6">
@@ -406,17 +406,12 @@ export default function App({ initialPath }: AppProps) {
 
         {/* Trust & Coverage Section */}
         <section id="zones" className="bg-gray-900 text-white py-16 px-4">
-          <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-around gap-8 text-center md:text-left">
-            <div className="flex flex-col items-center md:items-start max-w-lg">
+          <div className="max-w-3xl mx-auto flex flex-col items-center justify-center text-center">
+            <div className="flex flex-col items-center max-w-lg">
               <span className="text-yellow-500 font-bold text-sm tracking-widest uppercase mb-2">Zones couvertes</span>
               <p className="text-lg font-medium text-gray-200 leading-relaxed">
                 Had Soualem • Bir Jdid • Azemmour • Settat • Berrechid • Chtouka • El Jadida • et autres
               </p>
-            </div>
-            <div className="w-full md:w-px h-px md:h-16 bg-gray-700"></div>
-            <div className="flex flex-col items-center md:items-start">
-              <span className="text-yellow-500 font-bold text-sm tracking-widest uppercase mb-2">Temps de réponse moyen</span>
-              <p className="text-3xl font-black text-white">10 minutes</p>
             </div>
           </div>
         </section>
@@ -644,7 +639,7 @@ export default function App({ initialPath }: AppProps) {
             <section id="apropos" className="py-12 px-4 text-gray-800">
               <h2 className="text-2xl font-bold mb-4 text-gray-900">Qui sommes-nous ? - ChantierUrgence</h2>
               <p className="leading-relaxed mb-6">
-                ChantierUrgence est la plateforme de référence au Maroc pour la mise en relation rapide entre les chantiers en panne et les propriétaires d'engins BTP disponibles. Actifs sur l'axe stratégique de Had Soualem, Jorf Lasfar, Bir Jdid, Azemmour, El Jadida, Chtouka, Settat, Berrechid et Sidi Rahal, nous vous connectons avec la machine .
+                ChantierUrgence est la plateforme de référence au Maroc pour la mise en relation rapide entre les chantiers en panne et les propriétaires d'engins BTP disponibles. Actifs sur l'axe stratégique de Had Soualem, Jorf Lasfar, Bir Jdid, Azemmour, El Jadida, Chtouka, Settat, Berrechid et Sidi Rahal, nous vous connectons rapidement avec la machine la plus proche.
               </p>
 
               <h3 className="text-xl font-bold mb-3 text-gray-900">Nos Services &amp; Engins disponibles :</h3>
@@ -784,7 +779,7 @@ export default function App({ initialPath }: AppProps) {
           <div>
             <h3 className="text-white font-bold mb-3">Besoin d'un Engin en Urgence ?</h3>
             <p className="leading-relaxed">
-              En cas de panne sur votre chantier ou besoin de forage de puits, notre réseau de propriétaires d'engins vous garantit une mise en relation en moins de 10 minutes.
+              En cas de panne sur votre chantier ou besoin de forage de puits, notre réseau de propriétaires d'engins vous garantit une mise en relation rapide et immédiate.
             </p>
           </div>
         </div>

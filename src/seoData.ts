@@ -267,7 +267,7 @@ export const MACHINES: MachineConfig[] = [
     description:
       'Spécialiste en location tractopelle maroc et location jcb maroc : tractopelle à louer (3CX, 4CX), location trax et location de tractopelle avec chauffeur pour terrassement et fondations (حفير الساس).',
     detailedParagraph:
-      'Vous cherchez une location tractopelle ou une location jcb fiable ? Notre plateforme de jcb locations (jcb location 3CX/4CX et location telescopique jcb) vous permet de louer tractopelle en moins de 10 minutes. Que ce soit pour une location tractopelle particulier (tractopelle location particulier) ou pour un grand chantier BTP souhaitant louer un tractopelle ou louer une tractopelle en urgence, nous proposons chaque tractopelle à louer en formule location de tractopelle avec chauffeur. Contactez-nous pour connaître notre location tractopelle prix et louer un tractopelle prix avantageux pour votre location trax en région Casablanca-Settat.',
+      'Vous cherchez une location tractopelle ou une location jcb fiable ? Notre plateforme de jcb locations (jcb location 3CX/4CX et location telescopique jcb) vous permet de louer tractopelle rapidement. Que ce soit pour une location tractopelle particulier (tractopelle location particulier) ou pour un grand chantier BTP souhaitant louer un tractopelle ou louer une tractopelle en urgence, nous proposons chaque tractopelle à louer en formule location de tractopelle avec chauffeur. Contactez-nous pour connaître notre location tractopelle prix et louer un tractopelle prix avantageux pour votre location trax en région Casablanca-Settat.',
     faq: [
       {
         question: 'Quel est le tarif pour une location tractopelle prix ou louer un tractopelle prix ?',
@@ -277,7 +277,7 @@ export const MACHINES: MachineConfig[] = [
       {
         question: 'Proposez-vous la location tractopelle particulier et la location trax en urgence ?',
         answer:
-          'Oui, nous assurons aussi bien la location tractopelle particulier (tractopelle location particulier) que les prestations BTP pour louer tractopelle, louer une tractopelle, location jcb (jcb location / jcb locations), location telescopique jcb et location trax avec un tractopelle à louer disponible en 10 minutes.'
+          'Oui, nous assurons aussi bien la location tractopelle particulier (tractopelle location particulier) que les prestations BTP pour louer tractopelle, louer une tractopelle, location jcb (jcb location / jcb locations), location telescopique jcb et location trax avec un tractopelle à louer disponible immédiatement.'
       }
     ]
   },
@@ -314,7 +314,7 @@ export const MACHINES: MachineConfig[] = [
     description:
       'Référence en location poclain et location poclain maroc : pelles hydrauliques sur chenilles ou pneus (poclain caterpillar et caterpillar poclain de 14 à 30 tonnes) avec godet ou BRH (كراء بوكلان).',
     detailedParagraph:
-      'Pour vos chantiers de gros œuvre, d’excavation profonde et d’extraction lourde (كراء بوكلان), notre service de location poclain et location poclain maroc mobilise la pelle mécanique la plus proche en moins de 10 minutes. Nous disposons d’une large gamme de machines poclain caterpillar et caterpillar poclain (sur chenilles ou sur pneus, équipées de godets ou marteau brise-roche BRH) prêtes à intervenir avec chauffeur expérimenté et transfert rapide par porte-char.',
+      'Pour vos chantiers de gros œuvre, d’excavation profonde et d’extraction lourde (كراء بوكلان), notre service de location poclain et location poclain maroc mobilise rapidement la pelle mécanique la plus proche. Nous disposons d’une large gamme de machines poclain caterpillar et caterpillar poclain (sur chenilles ou sur pneus, équipées de godets ou marteau brise-roche BRH) prêtes à intervenir avec chauffeur expérimenté et transfert rapide par porte-char.',
     faq: [
       {
         question: 'Proposez-vous la location poclain maroc avec des modèles poclain caterpillar ?',
@@ -381,7 +381,7 @@ export const MACHINES: MachineConfig[] = [
     description:
       'Expert en location manitou maroc, manitou location et location clark : manitou télescopique 17m, manitou telescopique 18m, manitou rotatif 21m et location manuscopique avec chauffeur.',
     detailedParagraph:
-      'Besoin d’une location manitou (manitou location) ou d’une location clark immédiate ? Notre réseau de location manitou maroc répond à toute demande de location manitou autour de moi en moins de 10 minutes. Que vous souhaitiez louer un manitou (louer manitou / location d un manitou) ou trouver un manitou a louer en formule location manitou avec chauffeur, nous proposons la location manitou telescopique (location de manitou telescopique, location de telescopique manitou, location telescopique manitou, manitou télescopique location) ainsi que la location manuscopique et location chariot manuscopique. Choisissez la hauteur idéale : chariot telescopique 17 m (manitou télescopique 17m), manitou telescopique 18m (manitou télescopique 18m) ou location manitou rotatif avec manitou rotatif 21m, au meilleur prix location manitou.',
+      'Besoin d’une location manitou (manitou location) ou d’une location clark immédiate ? Notre réseau de location manitou maroc répond rapidement à toute demande de location manitou autour de moi. Que vous souhaitiez louer un manitou (louer manitou / location d un manitou) ou trouver un manitou a louer en formule location manitou avec chauffeur, nous proposons la location manitou telescopique (location de manitou telescopique, location de telescopique manitou, location telescopique manitou, manitou télescopique location) ainsi que la location manuscopique et location chariot manuscopique. Choisissez la hauteur idéale : chariot telescopique 17 m (manitou télescopique 17m), manitou telescopique 18m (manitou télescopique 18m) ou location manitou rotatif avec manitou rotatif 21m, au meilleur prix location manitou.',
     faq: [
       {
         question: 'Quelles hauteurs proposez-vous en location manitou telescopique et location manitou rotatif ?',
@@ -556,10 +556,14 @@ export function getRouteMeta(rawPath: string): RouteMeta {
     // Strictly 50–60 chars max:
     const title = `${matchedMachine.titlePrefix} ${matchedCity.titleLoc} | ChantierUrgence`;
     // Strictly 130–155 chars with CTA & phone number near the beginning:
-    const description = `Appelez le +212 718-187543 : ${matchedMachine.titlePrefix} ${matchedCity.locative} en 10 min. Dispo 24/7 avec chauffeur, zéro avance.`;
+    const rawDesc = `Appelez le +212 718-187543 : ${matchedMachine.titlePrefix} ${matchedCity.locative}. Dispo 24/7 avec chauffeur, intervention rapide et zéro avance.`;
+    const description =
+      rawDesc.length < 130
+        ? `Appelez le +212 718-187543 : ${matchedMachine.titlePrefix} ${matchedCity.locative}. Engin BTP disponible 24/7 avec chauffeur, dépannage rapide et zéro avance.`
+        : rawDesc;
 
     const h1Main = `${matchedMachine.name} ${matchedCity.locative}`;
-    const h1Sub = `Disponibilité immédiate 24/7 pour vos chantiers ${matchedCity.locative} et ${matchedCity.nearbyAreas.slice(0, 3).join(', ')} (${matchedMachine.brands}) — Mise en relation en 10 minutes.`;
+    const h1Sub = `Disponibilité immédiate 24/7 pour vos chantiers ${matchedCity.locative} et ${matchedCity.nearbyAreas.slice(0, 3).join(', ')} (${matchedMachine.brands}) — Mise en relation rapide et directe.`;
 
     const cityAreaServed = [
       {
@@ -686,8 +690,8 @@ export function getRouteMeta(rawPath: string): RouteMeta {
     const canonicalUrl = `${BASE_URL}/${matchedMachine.slug}`;
     // Strictly 50–58 chars:
     const title = `${matchedMachine.titlePrefix} au Maroc 24/7 | ChantierUrgence`;
-    // Strictly 135–152 chars with phone number near the beginning:
-    const description = `Appelez le +212 718-187543 : ${matchedMachine.titlePrefix} en 10 min à Had Soualem, Berrechid, Settat et El Jadida. Dispo 24/7 avec chauffeur.`;
+    // Strictly 132–140 chars with phone number near the beginning:
+    const description = `Appelez le +212 718-187543 : ${matchedMachine.titlePrefix} à Had Soualem, Berrechid, Settat et El Jadida. Dispo 24/7 avec chauffeur, zéro avance.`;
     const h1Main = matchedMachine.heroTitle;
     const h1Sub = `${matchedMachine.name} (${matchedMachine.brands}) disponible immédiatement sur Had Soualem, Province de Berrechid, Province de Settat, Région d’El Jadida et Jorf Lasfar.`;
 
@@ -811,9 +815,9 @@ export function getRouteMeta(rawPath: string): RouteMeta {
   const canonicalUrl = `${BASE_URL}/`;
   // Strictly 57 chars:
   const title = 'Location Tractopelle, Poclain & Manitou | ChantierUrgence';
-  // Strictly 151 chars with phone number near the beginning:
+  // Strictly 143 chars with phone number near the beginning:
   const description =
-    'Appelez le +212 718-187543 : Location Tractopelle JCB, Poclain, Manitou et Foreuse de puits en 10 min à Berrechid, Settat, Had Soualem et El Jadida.';
+    'Appelez le +212 718-187543 : Location Tractopelle JCB, Poclain, Manitou et Foreuse de puits 24/7 à Berrechid, Settat, Had Soualem et El Jadida.';
   const h1Main = 'Machine en panne dans votre chantier ?';
   const h1Sub =
     "Location d'urgence : Tractopelle & JCB, Poclain, Manitou, Clark, Foreuse de puits ou Caterpillar.";
@@ -921,7 +925,7 @@ export function getRouteMeta(rawPath: string): RouteMeta {
             name: 'Quels engins de chantier sont disponibles à la location en urgence ?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: "Nous proposons la location immédiate (en moins de 10 minutes) de Tractopelle JCB (location jcb maroc, location trax), Poclain et pelles hydrauliques (location poclain maroc, poclain caterpillar), chariots télescopiques Manitou (chariot telescopique 17 m, manitou telescopique 18m, manitou rotatif 21m, location clark) et foreuses de puits d'eau (location de foreuse de puits, location Sondeuse, حفر الابار)."
+              text: "Nous proposons la location immédiate de Tractopelle JCB (location jcb maroc, location trax), Poclain et pelles hydrauliques (location poclain maroc, poclain caterpillar), chariots télescopiques Manitou (chariot telescopique 17 m, manitou telescopique 18m, manitou rotatif 21m, location clark) et foreuses de puits d'eau (location de foreuse de puits, location Sondeuse, حفر الابار)."
             }
           }
         ]
