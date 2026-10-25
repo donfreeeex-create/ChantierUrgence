@@ -238,8 +238,8 @@ export default function App({ initialPath }: AppProps) {
 
                 <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-4">
                   {activeCity
-                    ? `${activeMachine.name} à ${activeCity.name} — Intervention Rapide en 10 Min`
-                    : `${activeMachine.h2Title} au Maroc`}
+                    ? `${activeMachine.h2Title} ${activeCity.locative}`
+                    : activeMachine.h2Title}
                 </h2>
 
                 <p className="text-gray-700 leading-relaxed mb-4 text-base md:text-lg">
@@ -248,14 +248,15 @@ export default function App({ initialPath }: AppProps) {
 
                 {activeCity ? (
                   <p className="text-gray-700 leading-relaxed mb-6">
-                    À <strong>{activeCity.name}</strong> ({activeCity.region}), nos équipes couvrent{' '}
+                    Pour votre besoin de <strong>{activeMachine.name.toLowerCase()}</strong>{' '}
+                    <strong>{activeCity.locative}</strong> ({activeCity.region}), nos équipes couvrent{' '}
                     {activeCity.industrialNote}, ainsi que les axes menant vers{' '}
                     <strong>{activeCity.nearbyAreas.join(', ')}</strong>. Que votre chantier soit à l'arrêt suite à une
                     panne imprévue ou que vous démarriez une nouvelle tranche de travaux, un simple appel au{' '}
                     <a href={`tel:${phoneNumber}`} className="font-bold text-gray-900 underline">
                       +212 718-187543
                     </a>{' '}
-                    suffit pour déclencher le départ de l'engin.
+                    suffit pour déclencher le départ de l'engin en moins de 10 minutes.
                   </p>
                 ) : (
                   <p className="text-gray-700 leading-relaxed mb-6">
@@ -263,7 +264,7 @@ export default function App({ initialPath }: AppProps) {
                     <strong>
                       Had Soualem, Berrechid, Settat, El Jadida, Jorf Lasfar, Bir Jdid, Azemmour, Chtouka et Sidi Rahal
                     </strong>
-                    . Sélectionnez votre ville ci-dessous pour accéder aux disponibilités locales immédiates.
+                    . Sélectionnez votre ville ou province ci-dessous pour accéder aux disponibilités locales immédiates.
                   </p>
                 )}
 
@@ -286,7 +287,7 @@ export default function App({ initialPath }: AppProps) {
                   <div className="bg-gray-50 p-5 rounded-xl border border-gray-200">
                     <h3 className="font-extrabold text-gray-900 mb-3 flex items-center gap-2">
                       <CheckCircle size={18} className="text-green-600" />
-                      Travaux &amp; Interventions{activeCity ? ` à ${activeCity.name}` : ''}
+                      Travaux &amp; Interventions{activeCity ? ` ${activeCity.locative}` : ''}
                     </h3>
                     <ul className="space-y-2 text-sm text-gray-700">
                       {activeMachine.useCases.map((uc, i) => (
@@ -296,6 +297,23 @@ export default function App({ initialPath }: AppProps) {
                         </li>
                       ))}
                     </ul>
+                  </div>
+                </div>
+
+                {/* Semantic Keywords / Recherches associées for Topical Authority */}
+                <div className="bg-gray-50/80 p-4 rounded-xl border border-gray-200 mb-6">
+                  <h3 className="text-xs font-extrabold uppercase tracking-wider text-gray-500 mb-2">
+                    Prestations &amp; Recherches associées {activeCity ? activeCity.locative : 'au Maroc'} :
+                  </h3>
+                  <div className="flex flex-wrap gap-1.5">
+                    {activeMachine.semanticKeywords.map((kw) => (
+                      <span
+                        key={kw}
+                        className="text-xs bg-white text-gray-700 px-2.5 py-1 rounded border border-gray-200 font-medium"
+                      >
+                        {kw}
+                      </span>
+                    ))}
                   </div>
                 </div>
 
@@ -320,7 +338,7 @@ export default function App({ initialPath }: AppProps) {
                               : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-yellow-100 hover:border-yellow-400'
                           }`}
                         >
-                          {activeMachine.shortName} à {c.name}
+                          {activeMachine.shortName} {c.locative}
                         </a>
                       );
                     })}
@@ -331,7 +349,7 @@ export default function App({ initialPath }: AppProps) {
                 <div className="border-t border-gray-200 pt-6 mt-6">
                   <h3 className="text-base font-extrabold text-gray-900 mb-4 flex items-center gap-2">
                     <HelpCircle size={18} className="text-yellow-600" />
-                    Questions fréquentes — {activeMachine.name} {activeCity ? `à ${activeCity.name}` : ''}
+                    Questions fréquentes — {activeMachine.name} {activeCity ? activeCity.locative : ''}
                   </h3>
                   <div className="space-y-4">
                     {activeMachine.faq.map((item, idx) => (
@@ -340,7 +358,7 @@ export default function App({ initialPath }: AppProps) {
                           {item.question} {activeCity ? `(${activeCity.name})` : ''}
                         </h4>
                         <p className="text-gray-600 text-sm leading-relaxed">
-                          {item.answer} {activeCity ? `Intervention garantie sur ${activeCity.name} et environs.` : ''}
+                          {item.answer} {activeCity ? `Intervention garantie ${activeCity.locative} et environs.` : ''}
                         </p>
                       </div>
                     ))}
@@ -371,7 +389,7 @@ export default function App({ initialPath }: AppProps) {
                 </div>
                 <h3 className="font-bold text-lg text-gray-900 mb-2">2. Localisation rapide</h3>
                 <p className="text-gray-600 text-sm">
-                  Nous trouvons la machine la plus proche de {activeCity ? activeCity.name : 'vous'}.
+                  Nous trouvons la machine la plus proche {activeCity ? activeCity.locative : 'de vous'}.
                 </p>
               </div>
               {/* Step 3 */}
@@ -403,240 +421,283 @@ export default function App({ initialPath }: AppProps) {
           </div>
         </section>
 
-        <div className="max-w-4xl mx-auto w-full divide-y divide-gray-200">
-          {/* Section : Tractopelle & JCB */}
-          <section id="tractopelle" className="py-12 px-4">
-            <h2 className="text-2xl font-bold mb-3">
-              <a
-                href="/location-tractopelle"
-                onClick={navigate('/location-tractopelle')}
-                className="hover:text-yellow-600 transition-colors"
-              >
-                Location Tractopelle &amp; JCB — Terrassement et Dépannage
-              </a>
+        {/* Hub-and-Spoke System:
+            - On Sub-Pages (activeMachine is defined): Show ONLY the focused "Autres engins disponibles à [Nom de la Ville]" grid to eliminate 70% boilerplate duplication.
+            - On Homepage (activeMachine is undefined): Show the 4 equipment overview sections + Qui sommes-nous. */}
+        {activeMachine ? (
+          <section className="max-w-4xl mx-auto w-full py-12 px-4">
+            <h2 className="text-2xl font-extrabold text-gray-900 mb-6">
+              Autres engins disponibles {activeCity ? `à ${activeCity.name}` : 'dans votre région'} :
             </h2>
-            <p className="leading-relaxed text-gray-600 mb-4">
-              Location de tractopelles JCB (3CX, 4CX) et Caterpillar avec chauffeur expérimenté pour vos travaux de terrassement, ouverture de fondations (حفير الساس), fouilles en tranchées, assainissement, nivellement de terrain et chargement de camions. Équipés de godets de terrassement, godets rétro et brise-roche hydraulique (BRH), nos tractopelles interviennent en urgence sur vos chantiers à Had Soualem, Berrechid, Settat, Bir Jdid, Azemmour, El Jadida et Jorf Lasfar.
-            </p>
-            <div className="flex flex-wrap gap-1.5 mb-6">
-              {CITIES.map((c) => (
-                <a
-                  key={c.slug}
-                  href={`/location-tractopelle/${c.slug}`}
-                  onClick={navigate(`/location-tractopelle/${c.slug}`)}
-                  className="text-xs bg-gray-100 hover:bg-yellow-100 text-gray-700 hover:text-black font-semibold px-2.5 py-1 rounded border border-gray-200 transition-colors"
-                >
-                  Tractopelle {c.name}
-                </a>
-              ))}
-            </div>
-            <div className="flex flex-wrap items-center gap-3">
-              <a
-                href={`tel:${phoneNumber}`}
-                className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-3 px-6 rounded-lg transition-colors shadow-sm"
-              >
-                <Phone size={20} fill="currentColor" />
-                Demander un Tractopelle JCB
-              </a>
-              <a
-                href="/location-tractopelle"
-                onClick={navigate('/location-tractopelle')}
-                className="inline-flex items-center gap-1 text-sm font-bold text-gray-700 hover:text-yellow-600 py-2 px-3"
-              >
-                Voir les détails Tractopelle <ChevronRight size={16} />
-              </a>
-            </div>
-          </section>
-
-          {/* Section : Manitou / Chariot Télescopique */}
-          <section id="manitou" className="py-12 px-4">
-            <h2 className="text-2xl font-bold mb-3">
-              <a
-                href="/location-manitou"
-                onClick={navigate('/location-manitou')}
-                className="hover:text-yellow-600 transition-colors"
-              >
-                Location Manitou &amp; Clark — Chariot Télescopique et Élévateur
-              </a>
-            </h2>
-            <p className="leading-relaxed text-gray-600 mb-4">
-              Chariots télescopiques Manitou disponibles de 12m à 21m (MT 1440, MT 1840, rotatifs ou fixes) et chariots élévateurs Clark industriels, avec ou sans chauffeur. Idéal pour le levage de charpentes métalliques, la manutention de palettes, le coffrage en hauteur et la logistique industrielle en location journalière ou longue durée à Had Soualem, Berrechid, Settat, El Jadida et Jorf Lasfar.
-            </p>
-            <div className="flex flex-wrap gap-1.5 mb-6">
-              {CITIES.map((c) => (
-                <a
-                  key={c.slug}
-                  href={`/location-manitou/${c.slug}`}
-                  onClick={navigate(`/location-manitou/${c.slug}`)}
-                  className="text-xs bg-gray-100 hover:bg-yellow-100 text-gray-700 hover:text-black font-semibold px-2.5 py-1 rounded border border-gray-200 transition-colors"
-                >
-                  Manitou {c.name}
-                </a>
-              ))}
-            </div>
-            <div className="flex flex-wrap items-center gap-3">
-              <a
-                href={`tel:${phoneNumber}`}
-                className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-3 px-6 rounded-lg transition-colors shadow-sm"
-              >
-                <Phone size={20} fill="currentColor" />
-                Réserver un Manitou
-              </a>
-              <a
-                href="/location-manitou"
-                onClick={navigate('/location-manitou')}
-                className="inline-flex items-center gap-1 text-sm font-bold text-gray-700 hover:text-yellow-600 py-2 px-3"
-              >
-                Voir les détails Manitou <ChevronRight size={16} />
-              </a>
-            </div>
-          </section>
-
-          {/* Section : Poclain / Caterpillar / Pelles */}
-          <section id="poclain" className="py-12 px-4">
-            <h2 className="text-2xl font-bold mb-3">
-              <a
-                href="/location-poclain"
-                onClick={navigate('/location-poclain')}
-                className="hover:text-yellow-600 transition-colors"
-              >
-                Location Poclain, Caterpillar et Pelles Hydrauliques
-              </a>
-            </h2>
-            <p className="leading-relaxed text-gray-600 mb-4">
-              Location de pelles mécaniques hydrauliques sur chenilles ou sur pneus (Poclain, Caterpillar, JCB, de 14 à 30 tonnes) équipées de godet de terrassement, godet de curage ou marteau brise-roche (BRH). Solution idéale pour le gros œuvre, l'excavation profonde, la démolition, le déroctage et l'extraction (كراء بوكلان) avec intervention rapide en cas de panne d'engin à Had Soualem, Berrechid, Settat, Bir Jdid, El Jadida et Jorf Lasfar.
-            </p>
-            <div className="flex flex-wrap gap-1.5 mb-6">
-              {CITIES.map((c) => (
-                <a
-                  key={c.slug}
-                  href={`/location-poclain/${c.slug}`}
-                  onClick={navigate(`/location-poclain/${c.slug}`)}
-                  className="text-xs bg-gray-100 hover:bg-yellow-100 text-gray-700 hover:text-black font-semibold px-2.5 py-1 rounded border border-gray-200 transition-colors"
-                >
-                  Poclain {c.name}
-                </a>
-              ))}
-            </div>
-            <div className="flex flex-wrap items-center gap-3">
-              <a
-                href={`tel:${phoneNumber}`}
-                className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-3 px-6 rounded-lg transition-colors shadow-sm"
-              >
-                <Phone size={20} fill="currentColor" />
-                Demander une Pelle
-              </a>
-              <a
-                href="/location-poclain"
-                onClick={navigate('/location-poclain')}
-                className="inline-flex items-center gap-1 text-sm font-bold text-gray-700 hover:text-yellow-600 py-2 px-3"
-              >
-                Voir les détails Poclain <ChevronRight size={16} />
-              </a>
-            </div>
-          </section>
-
-          {/* Section : Foreuse — les 3 sous-services distincts */}
-          <section id="forage" className="py-12 px-4">
-            <h2 className="text-2xl font-bold mb-3">
-              <a
-                href="/location-foreuse-de-puits"
-                onClick={navigate('/location-foreuse-de-puits')}
-                className="hover:text-yellow-600 transition-colors"
-              >
-                Location Foreuse de Puits — Forage d'Eau, Horizontal, Poteaux
-              </a>
-            </h2>
-            <p className="leading-relaxed text-gray-600 mb-4">
-              Location de foreuse de puits d'eau (حفير البير) par forage rotatif et marteau fond de trou pour particuliers, exploitations agricoles et industriels, ainsi que foreuse horizontale dirigée pour le passage de câbles et canalisations sous chaussée, et foreuse à tarière pour trous de poteaux (clôtures, vergers, lignes électriques). Devis rapide et intervention sur Had Soualem, Bir Jdid, Chtouka, Azemmour, El Jadida, Berrechid et Settat.
-            </p>
-            <div className="flex flex-wrap gap-1.5 mb-6">
-              {CITIES.map((c) => (
-                <a
-                  key={c.slug}
-                  href={`/location-foreuse-de-puits/${c.slug}`}
-                  onClick={navigate(`/location-foreuse-de-puits/${c.slug}`)}
-                  className="text-xs bg-gray-100 hover:bg-yellow-100 text-gray-700 hover:text-black font-semibold px-2.5 py-1 rounded border border-gray-200 transition-colors"
-                >
-                  Foreuse {c.name}
-                </a>
-              ))}
-            </div>
-            <div className="flex flex-wrap items-center gap-3">
-              <a
-                href={`tel:${phoneNumber}`}
-                className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-3 px-6 rounded-lg transition-colors shadow-sm"
-              >
-                <Phone size={20} fill="currentColor" />
-                Commander une Foreuse
-              </a>
-              <a
-                href="/location-foreuse-de-puits"
-                onClick={navigate('/location-foreuse-de-puits')}
-                className="inline-flex items-center gap-1 text-sm font-bold text-gray-700 hover:text-yellow-600 py-2 px-3"
-              >
-                Voir les détails Foreuse <ChevronRight size={16} />
-              </a>
-            </div>
-          </section>
-
-          {/* Section : Qui sommes-nous ? - ChantierUrgence */}
-          <section id="apropos" className="py-12 px-4 text-gray-800">
-            <h2 className="text-2xl font-bold mb-4 text-gray-900">Qui sommes-nous ? - ChantierUrgence</h2>
-            <p className="leading-relaxed mb-6">
-              ChantierUrgence est la plateforme de référence au Maroc pour la mise en relation rapide entre les chantiers en panne et les propriétaires d'engins BTP disponibles. Actifs sur l'axe stratégique de Had Soualem, Jorf Lasfar, Bir Jdid, Azemmour, El Jadida, Chtouka, Settat, Berrechid et Sidi Rahal, nous vous connectons avec la machine .
-            </p>
-
-            <h3 className="text-xl font-bold mb-3 text-gray-900">Nos Services &amp; Engins disponibles :</h3>
-            <ul className="space-y-3 mb-6">
-              <li>
-                <strong>
-                  <a href="/location-tractopelle" onClick={navigate('/location-tractopelle')} className="hover:underline">
-                    Location Tractopelle &amp; JCB
-                  </a>{' '}
-                  :
-                </strong>{' '}
-                Pour le dépannage rapide, le terrassement et vos travaux de base (حفير الساس).
-              </li>
-              <li>
-                <strong>
-                  <a href="/location-poclain" onClick={navigate('/location-poclain')} className="hover:underline">
-                    Location Poclain &amp; Caterpillar
-                  </a>{' '}
-                  :
-                </strong>{' '}
-                Pelle mécanique sur chenille pour les travaux lourds, l'extraction et le gros œuvre (كراء بوكلان).
-              </li>
-              <li>
-                <strong>
-                  <a href="/location-manitou" onClick={navigate('/location-manitou')} className="hover:underline">
-                    Location Manitou &amp; Clark
-                  </a>{' '}
-                  :
-                </strong>{' '}
-                Chariot télescopique (de 12m à 21m, avec ou sans chauffeur) et chariot élévateur pour le levage et la manutention industrielle.
-              </li>
-              <li>
-                <strong>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {MACHINES.filter((m) => m.slug !== activeMachine.slug).map((m) => {
+                const targetHref = activeCity ? `/${m.slug}/${activeCity.slug}` : `/${m.slug}`;
+                return (
                   <a
-                    href="/location-foreuse-de-puits"
-                    onClick={navigate('/location-foreuse-de-puits')}
-                    className="hover:underline"
+                    key={m.slug}
+                    href={targetHref}
+                    onClick={navigate(targetHref)}
+                    className="bg-white p-6 rounded-xl border border-gray-200 hover:border-yellow-500 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group"
                   >
-                    Location de Foreuse (Forage d'eau)
-                  </a>{' '}
-                  :
-                </strong>{' '}
-                Sondage de puits (حفير البير) pour les particuliers et agriculteurs, foreuse horizontale pour le passage de câbles et canalisations, et foreuse à trou pour poteaux.
-              </li>
-            </ul>
-
-            <h3 className="text-xl font-bold mb-3 text-gray-900">Pourquoi nous choisir ?</h3>
-            <p className="leading-relaxed">
-              Pas de frais d'avance, pas de formulaire interminable. Dans le secteur du BTP, le temps c'est de l'argent. Un simple appel téléphonique suffit pour trouver l'engin qu'il vous faut et déclencher une intervention immédiate, où que vous soyez sur votre chantier.
-            </p>
+                    <div>
+                      <div className="flex items-center justify-between gap-2 mb-2">
+                        <h3 className="font-bold text-lg text-gray-900 group-hover:text-yellow-600 transition-colors">
+                          {m.name}
+                        </h3>
+                        <span className="text-xs bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded shrink-0" dir="rtl">
+                          {m.arabicTag}
+                        </span>
+                      </div>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                        {activeCity
+                          ? `${m.shortName} disponible en urgence ${activeCity.locative} (${m.brands}).`
+                          : m.description}
+                      </p>
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-sm font-bold text-yellow-600 group-hover:translate-x-1 transition-transform">
+                      Voir la disponibilité {activeCity ? `(${activeCity.name})` : ''} <ChevronRight size={16} />
+                    </span>
+                  </a>
+                );
+              })}
+            </div>
           </section>
-        </div>
+        ) : (
+          <div className="max-w-4xl mx-auto w-full divide-y divide-gray-200">
+            {/* Section : Tractopelle & JCB */}
+            <section id="tractopelle" className="py-12 px-4">
+              <h2 className="text-2xl font-bold mb-3">
+                <a
+                  href="/location-tractopelle"
+                  onClick={navigate('/location-tractopelle')}
+                  className="hover:text-yellow-600 transition-colors"
+                >
+                  Location Tractopelle &amp; JCB — Terrassement et Dépannage
+                </a>
+              </h2>
+              <p className="leading-relaxed text-gray-600 mb-4">
+                Spécialiste en <strong>location tractopelle maroc</strong> et <strong>location jcb maroc</strong> : que vous souhaitiez <strong>louer un tractopelle</strong>, <strong>louer une tractopelle</strong> ou trouver un <strong>tractopelle à louer</strong> en formule <strong>location de tractopelle avec chauffeur</strong> (ou <strong>location tractopelle particulier</strong> / <strong>tractopelle location particulier</strong>), notre service de <strong>jcb locations</strong> (<strong>location jcb</strong>, <strong>jcb location</strong> 3CX/4CX, <strong>location telescopique jcb</strong> et <strong>location trax</strong>) assure vos travaux de terrassement et fondations (حفير الساس) au meilleur <strong>location tractopelle prix</strong> (<strong>louer un tractopelle prix</strong> compétitif).
+              </p>
+              <div className="flex flex-wrap gap-1.5 mb-6">
+                {CITIES.map((c) => (
+                  <a
+                    key={c.slug}
+                    href={`/location-tractopelle/${c.slug}`}
+                    onClick={navigate(`/location-tractopelle/${c.slug}`)}
+                    className="text-xs bg-gray-100 hover:bg-yellow-100 text-gray-700 hover:text-black font-semibold px-2.5 py-1 rounded border border-gray-200 transition-colors"
+                  >
+                    Tractopelle {c.name}
+                  </a>
+                ))}
+              </div>
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href={`tel:${phoneNumber}`}
+                  className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-3 px-6 rounded-lg transition-colors shadow-sm"
+                >
+                  <Phone size={20} fill="currentColor" />
+                  Demander un Tractopelle JCB
+                </a>
+                <a
+                  href="/location-tractopelle"
+                  onClick={navigate('/location-tractopelle')}
+                  className="inline-flex items-center gap-1 text-sm font-bold text-gray-700 hover:text-yellow-600 py-2 px-3"
+                >
+                  Voir les détails Tractopelle <ChevronRight size={16} />
+                </a>
+              </div>
+            </section>
+
+            {/* Section : Manitou / Chariot Télescopique */}
+            <section id="manitou" className="py-12 px-4">
+              <h2 className="text-2xl font-bold mb-3">
+                <a
+                  href="/location-manitou"
+                  onClick={navigate('/location-manitou')}
+                  className="hover:text-yellow-600 transition-colors"
+                >
+                  Location Manitou &amp; Clark — Chariot Télescopique et Élévateur
+                </a>
+              </h2>
+              <p className="leading-relaxed text-gray-600 mb-4">
+                Service complet de <strong>location manitou maroc</strong> (<strong>location manitou</strong>, <strong>manitou location</strong>) et <strong>location clark</strong> : trouvez rapidement une <strong>location manitou autour de moi</strong> pour <strong>louer un manitou</strong> (<strong>louer manitou</strong>, <strong>location d un manitou</strong>, <strong>manitou a louer</strong>) en formule <strong>location manitou avec chauffeur</strong>. Disponibles en <strong>chariot telescopique 17 m</strong> (<strong>manitou télescopique 17m</strong>), <strong>manitou telescopique 18m</strong> (<strong>manitou télescopique 18m</strong>) et <strong>location manitou rotatif</strong> (<strong>manitou rotatif 21m</strong>) pour toute <strong>location manitou telescopique</strong>, <strong>location de telescopique manitou</strong>, <strong>location de manitou telescopique</strong>, <strong>location telescopique manitou</strong>, <strong>manitou télescopique location</strong>, <strong>location manuscopique</strong> et <strong>location chariot manuscopique</strong> au meilleur <strong>prix location manitou</strong>.
+              </p>
+              <div className="flex flex-wrap gap-1.5 mb-6">
+                {CITIES.map((c) => (
+                  <a
+                    key={c.slug}
+                    href={`/location-manitou/${c.slug}`}
+                    onClick={navigate(`/location-manitou/${c.slug}`)}
+                    className="text-xs bg-gray-100 hover:bg-yellow-100 text-gray-700 hover:text-black font-semibold px-2.5 py-1 rounded border border-gray-200 transition-colors"
+                  >
+                    Manitou {c.name}
+                  </a>
+                ))}
+              </div>
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href={`tel:${phoneNumber}`}
+                  className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-3 px-6 rounded-lg transition-colors shadow-sm"
+                >
+                  <Phone size={20} fill="currentColor" />
+                  Réserver un Manitou
+                </a>
+                <a
+                  href="/location-manitou"
+                  onClick={navigate('/location-manitou')}
+                  className="inline-flex items-center gap-1 text-sm font-bold text-gray-700 hover:text-yellow-600 py-2 px-3"
+                >
+                  Voir les détails Manitou <ChevronRight size={16} />
+                </a>
+              </div>
+            </section>
+
+            {/* Section : Poclain / Caterpillar / Pelles */}
+            <section id="poclain" className="py-12 px-4">
+              <h2 className="text-2xl font-bold mb-3">
+                <a
+                  href="/location-poclain"
+                  onClick={navigate('/location-poclain')}
+                  className="hover:text-yellow-600 transition-colors"
+                >
+                  Location Poclain, Caterpillar et Pelles Hydrauliques
+                </a>
+              </h2>
+              <p className="leading-relaxed text-gray-600 mb-4">
+                Votre partenaire en <strong>location poclain</strong> et <strong>location poclain maroc</strong> : pelles mécaniques hydrauliques sur chenilles ou sur pneus de type <strong>poclain caterpillar</strong> et <strong>caterpillar poclain</strong> (14 à 30 tonnes) équipées de godet de terrassement, godet de curage ou marteau brise-roche (BRH) pour le gros œuvre, l'excavation profonde et l'extraction (كراء بوكلان).
+              </p>
+              <div className="flex flex-wrap gap-1.5 mb-6">
+                {CITIES.map((c) => (
+                  <a
+                    key={c.slug}
+                    href={`/location-poclain/${c.slug}`}
+                    onClick={navigate(`/location-poclain/${c.slug}`)}
+                    className="text-xs bg-gray-100 hover:bg-yellow-100 text-gray-700 hover:text-black font-semibold px-2.5 py-1 rounded border border-gray-200 transition-colors"
+                  >
+                    Poclain {c.name}
+                  </a>
+                ))}
+              </div>
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href={`tel:${phoneNumber}`}
+                  className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-3 px-6 rounded-lg transition-colors shadow-sm"
+                >
+                  <Phone size={20} fill="currentColor" />
+                  Demander une Pelle
+                </a>
+                <a
+                  href="/location-poclain"
+                  onClick={navigate('/location-poclain')}
+                  className="inline-flex items-center gap-1 text-sm font-bold text-gray-700 hover:text-yellow-600 py-2 px-3"
+                >
+                  Voir les détails Poclain <ChevronRight size={16} />
+                </a>
+              </div>
+            </section>
+
+            {/* Section : Foreuse — les 3 sous-services distincts */}
+            <section id="forage" className="py-12 px-4">
+              <h2 className="text-2xl font-bold mb-3">
+                <a
+                  href="/location-foreuse-de-puits"
+                  onClick={navigate('/location-foreuse-de-puits')}
+                  className="hover:text-yellow-600 transition-colors"
+                >
+                  Location Foreuse de Puits — Forage d'Eau, Horizontal, Poteaux
+                </a>
+              </h2>
+              <p className="leading-relaxed text-gray-600 mb-4">
+                Expertise complète en <strong>location foreuse</strong>, <strong>location de foreuse de puits</strong> (<strong>foreuse de puits location</strong>, <strong>location de foreuse pour puit</strong>, <strong>location foreuse de puit</strong>) et <strong>foreuse puits d eau</strong> avec <strong>location Sondeuse</strong> moderne pour vos travaux de <strong>حفر الابار</strong> (<strong>حفارة ابار</strong> / حفير البير). Nous assurons aussi la <strong>location foreuse horizontale</strong> (<strong>foreuse horizontale location</strong>), la <strong>location foreuse hydraulique</strong> (<strong>foreuse hydraulique location</strong>), la <strong>location foreuse terre</strong> et la <strong>foreuse à trou pour poteau location</strong>.
+              </p>
+              <div className="flex flex-wrap gap-1.5 mb-6">
+                {CITIES.map((c) => (
+                  <a
+                    key={c.slug}
+                    href={`/location-foreuse-de-puits/${c.slug}`}
+                    onClick={navigate(`/location-foreuse-de-puits/${c.slug}`)}
+                    className="text-xs bg-gray-100 hover:bg-yellow-100 text-gray-700 hover:text-black font-semibold px-2.5 py-1 rounded border border-gray-200 transition-colors"
+                  >
+                    Foreuse {c.name}
+                  </a>
+                ))}
+              </div>
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href={`tel:${phoneNumber}`}
+                  className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-3 px-6 rounded-lg transition-colors shadow-sm"
+                >
+                  <Phone size={20} fill="currentColor" />
+                  Commander une Foreuse
+                </a>
+                <a
+                  href="/location-foreuse-de-puits"
+                  onClick={navigate('/location-foreuse-de-puits')}
+                  className="inline-flex items-center gap-1 text-sm font-bold text-gray-700 hover:text-yellow-600 py-2 px-3"
+                >
+                  Voir les détails Foreuse <ChevronRight size={16} />
+                </a>
+              </div>
+            </section>
+
+            {/* Section : Qui sommes-nous ? - ChantierUrgence */}
+            <section id="apropos" className="py-12 px-4 text-gray-800">
+              <h2 className="text-2xl font-bold mb-4 text-gray-900">Qui sommes-nous ? - ChantierUrgence</h2>
+              <p className="leading-relaxed mb-6">
+                ChantierUrgence est la plateforme de référence au Maroc pour la mise en relation rapide entre les chantiers en panne et les propriétaires d'engins BTP disponibles. Actifs sur l'axe stratégique de Had Soualem, Jorf Lasfar, Bir Jdid, Azemmour, El Jadida, Chtouka, Settat, Berrechid et Sidi Rahal, nous vous connectons avec la machine .
+              </p>
+
+              <h3 className="text-xl font-bold mb-3 text-gray-900">Nos Services &amp; Engins disponibles :</h3>
+              <ul className="space-y-3 mb-6">
+                <li>
+                  <strong>
+                    <a href="/location-tractopelle" onClick={navigate('/location-tractopelle')} className="hover:underline">
+                      Location Tractopelle &amp; JCB
+                    </a>{' '}
+                    :
+                  </strong>{' '}
+                  Pour le dépannage rapide, le terrassement et vos travaux de base (حفير الساس).
+                </li>
+                <li>
+                  <strong>
+                    <a href="/location-poclain" onClick={navigate('/location-poclain')} className="hover:underline">
+                      Location Poclain &amp; Caterpillar
+                    </a>{' '}
+                    :
+                  </strong>{' '}
+                  Pelle mécanique sur chenille pour les travaux lourds, l'extraction et le gros œuvre (كراء بوكلان).
+                </li>
+                <li>
+                  <strong>
+                    <a href="/location-manitou" onClick={navigate('/location-manitou')} className="hover:underline">
+                      Location Manitou &amp; Clark
+                    </a>{' '}
+                    :
+                  </strong>{' '}
+                  Chariot télescopique (de 12m à 21m, avec ou sans chauffeur) et chariot élévateur pour le levage et la manutention industrielle.
+                </li>
+                <li>
+                  <strong>
+                    <a
+                      href="/location-foreuse-de-puits"
+                      onClick={navigate('/location-foreuse-de-puits')}
+                      className="hover:underline"
+                    >
+                      Location de Foreuse (Forage d'eau)
+                    </a>{' '}
+                    :
+                  </strong>{' '}
+                  Sondage de puits (حفير البير) pour les particuliers et agriculteurs, foreuse horizontale pour le passage de câbles et canalisations, et foreuse à trou pour poteaux.
+                </li>
+              </ul>
+
+              <h3 className="text-xl font-bold mb-3 text-gray-900">Pourquoi nous choisir ?</h3>
+              <p className="leading-relaxed">
+                Pas de frais d'avance, pas de formulaire interminable. Dans le secteur du BTP, le temps c'est de l'argent. Un simple appel téléphonique suffit pour trouver l'engin qu'il vous faut et déclencher une intervention immédiate, où que vous soyez sur votre chantier.
+              </p>
+            </section>
+          </div>
+        )}
       </main>
 
       {/* SEO Content Footer Section with Complete Local Matrix */}

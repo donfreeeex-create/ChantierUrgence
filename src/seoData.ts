@@ -1,6 +1,8 @@
 export interface CityConfig {
   slug: string;
   name: string;
+  titleLoc: string;
+  locative: string;
   schemaType: 'City' | 'Place' | 'AdministrativeArea';
   region: string;
   lat: number;
@@ -14,6 +16,7 @@ export interface MachineConfig {
   slug: string;
   id: string;
   name: string;
+  titlePrefix: string;
   shortName: string;
   arabicTag: string;
   heroTitle: string;
@@ -23,6 +26,7 @@ export interface MachineConfig {
   brands: string;
   specs: string[];
   useCases: string[];
+  semanticKeywords: string[];
   description: string;
   detailedParagraph: string;
   faq: {
@@ -35,6 +39,8 @@ export const CITIES: CityConfig[] = [
   {
     slug: 'casablanca-settat',
     name: 'Région Casablanca-Settat',
+    titleLoc: 'Casablanca-Settat',
+    locative: 'en Région Casablanca-Settat',
     schemaType: 'AdministrativeArea',
     region: 'Casablanca-Settat',
     lat: 33.3600,
@@ -47,6 +53,8 @@ export const CITIES: CityConfig[] = [
   {
     slug: 'had-soualem',
     name: 'Had Soualem',
+    titleLoc: 'à Had Soualem',
+    locative: 'à Had Soualem',
     schemaType: 'City',
     region: 'Province de Berrechid (Casablanca-Settat)',
     lat: 33.4111,
@@ -59,6 +67,8 @@ export const CITIES: CityConfig[] = [
   {
     slug: 'berrechid',
     name: 'Berrechid',
+    titleLoc: 'à Berrechid',
+    locative: 'à Berrechid',
     schemaType: 'City',
     region: 'Province de Berrechid (Casablanca-Settat)',
     lat: 33.2655,
@@ -71,6 +81,8 @@ export const CITIES: CityConfig[] = [
   {
     slug: 'province-berrechid',
     name: 'Province de Berrechid',
+    titleLoc: 'Prov. Berrechid',
+    locative: 'dans la Province de Berrechid',
     schemaType: 'AdministrativeArea',
     region: 'Casablanca-Settat',
     lat: 33.3100,
@@ -83,6 +95,8 @@ export const CITIES: CityConfig[] = [
   {
     slug: 'settat',
     name: 'Settat',
+    titleLoc: 'à Settat',
+    locative: 'à Settat',
     schemaType: 'City',
     region: 'Province de Settat (Casablanca-Settat)',
     lat: 33.0010,
@@ -95,6 +109,8 @@ export const CITIES: CityConfig[] = [
   {
     slug: 'province-settat',
     name: 'Province de Settat',
+    titleLoc: 'Province Settat',
+    locative: 'dans la Province de Settat',
     schemaType: 'AdministrativeArea',
     region: 'Casablanca-Settat',
     lat: 32.9500,
@@ -107,6 +123,8 @@ export const CITIES: CityConfig[] = [
   {
     slug: 'el-jadida',
     name: 'El Jadida',
+    titleLoc: 'à El Jadida',
+    locative: 'à El Jadida',
     schemaType: 'City',
     region: 'Province d’El Jadida (Casablanca-Settat)',
     lat: 33.2316,
@@ -119,6 +137,8 @@ export const CITIES: CityConfig[] = [
   {
     slug: 'region-el-jadida',
     name: 'Région d’El Jadida',
+    titleLoc: 'Région El Jadida',
+    locative: 'dans la Région d’El Jadida',
     schemaType: 'AdministrativeArea',
     region: 'Casablanca-Settat',
     lat: 33.1800,
@@ -131,6 +151,8 @@ export const CITIES: CityConfig[] = [
   {
     slug: 'jorf-lasfar',
     name: 'Jorf Lasfar',
+    titleLoc: 'à Jorf Lasfar',
+    locative: 'à Jorf Lasfar',
     schemaType: 'Place',
     region: 'Province d’El Jadida (Casablanca-Settat)',
     lat: 33.1156,
@@ -143,6 +165,8 @@ export const CITIES: CityConfig[] = [
   {
     slug: 'bir-jdid',
     name: 'Bir Jdid',
+    titleLoc: 'à Bir Jdid',
+    locative: 'à Bir Jdid',
     schemaType: 'City',
     region: 'Province d’El Jadida (Casablanca-Settat)',
     lat: 33.3736,
@@ -155,6 +179,8 @@ export const CITIES: CityConfig[] = [
   {
     slug: 'azemmour',
     name: 'Azemmour',
+    titleLoc: 'à Azemmour',
+    locative: 'à Azemmour',
     schemaType: 'City',
     region: 'Province d’El Jadida (Casablanca-Settat)',
     lat: 33.2878,
@@ -167,6 +193,8 @@ export const CITIES: CityConfig[] = [
   {
     slug: 'chtouka',
     name: 'Chtouka',
+    titleLoc: 'à Chtouka',
+    locative: 'à Chtouka',
     schemaType: 'Place',
     region: 'Province d’El Jadida (Casablanca-Settat)',
     lat: 33.3210,
@@ -179,6 +207,8 @@ export const CITIES: CityConfig[] = [
   {
     slug: 'sidi-rahal',
     name: 'Sidi Rahal',
+    titleLoc: 'à Sidi Rahal',
+    locative: 'à Sidi Rahal',
     schemaType: 'City',
     region: 'Province de Berrechid (Casablanca-Settat)',
     lat: 33.4719,
@@ -186,7 +216,7 @@ export const CITIES: CityConfig[] = [
     radiusMeters: 28000,
     industrialNote:
       'Sidi Rahal Chatai, Dar Bouazza, les résidences balnéaires, les projets touristiques et les terrains en construction sur le littoral atlantique',
-    nearbyAreas: ['Had Soualem', 'Bir Jdid', 'Dar Bouazza', 'Berrechid', 'Casablanca']
+    nearbyAreas: ['Had Soualem', 'Bir Jdid', 'Dar Bouazza', 'Berrechid']
   }
 ];
 
@@ -195,39 +225,59 @@ export const MACHINES: MachineConfig[] = [
     slug: 'location-tractopelle',
     id: 'tractopelle',
     name: 'Location Tractopelle & JCB',
+    titlePrefix: 'Location Tractopelle JCB',
     shortName: 'Tractopelle & JCB',
     arabicTag: 'حفير الساس',
-    heroTitle: 'Location Tractopelle & JCB en Urgence',
-    h2Title: 'Location Tractopelle & JCB — Terrassement et Dépannage',
+    heroTitle: 'Location Tractopelle & JCB Maroc (Location Trax)',
+    h2Title: 'Location Tractopelle & JCB Maroc — Louer un Tractopelle avec Chauffeur',
     ctaLabel: 'Demander un Tractopelle JCB',
     serviceType: 'Location Tractopelle & JCB',
-    brands: 'JCB 3CX, JCB 4CX, Caterpillar 428 / 432, CASE',
+    brands: 'JCB 3CX, JCB 4CX, Caterpillar 428 / 432, CASE (location trax)',
     specs: [
-      'Godet chargeur 4-en-1 grand volume pour nivellement et chargement',
-      'Bras rétro extensible avec godets de 30 cm, 40 cm, 60 cm et 80 cm',
-      'Marteau Brise-Roche Hydraulique (BRH) disponible pour sols rocheux et béton',
-      'Location avec chauffeur qualifié et carburant inclus ou selon formule'
+      'Service complet de jcb locations, location jcb et jcb location (3CX / 4CX) ainsi que location telescopique jcb',
+      'Formules flexibles : location de tractopelle avec chauffeur, location tractopelle particulier et tractopelle location particulier',
+      'Bras rétro extensible avec godets de 30 à 80 cm et Marteau Brise-Roche Hydraulique (BRH)',
+      'Tarification claire : location tractopelle prix étudié et louer un tractopelle prix compétitif à la journée ou au mois'
     ],
     useCases: [
-      'Ouverture de fondations et fouilles en rigoles (حفير الساس)',
-      'Tranchées d’assainissement, passage de conduites d’eau et câbles électriques',
-      'Décapage de terre végétale, nivellement de terrain et remblayage',
-      'Dépannage immédiat en cas de panne de machine sur votre chantier et chargement de camions'
+      'Ouverture de fondations et fouilles en rigoles (حفير الساس) avec tractopelle à louer immédiatement',
+      'Possibilité de louer tractopelle, louer un tractopelle ou louer une tractopelle pour tranchées et assainissement',
+      'Nivellement de terrain, décapage, remblayage et location trax pour chargement de camions',
+      'Dépannage urgent 24/7 pour tout besoin de location tractopelle maroc et location jcb maroc'
+    ],
+    semanticKeywords: [
+      'jcb locations',
+      'location jcb maroc',
+      'location tractopelle maroc',
+      'location jcb',
+      'jcb location',
+      'location telescopique jcb',
+      'location tractopelle',
+      'louer tractopelle',
+      'location tractopelle particulier',
+      'louer un tractopelle',
+      'location de tractopelle avec chauffeur',
+      'louer une tractopelle',
+      'tractopelle location particulier',
+      'tractopelle à louer',
+      'location tractopelle prix',
+      'louer un tractopelle prix',
+      'location trax'
     ],
     description:
-      'Location de tractopelles JCB (3CX, 4CX) et Caterpillar avec chauffeur expérimenté pour vos travaux de terrassement, ouverture de fondations (حفير الساس), fouilles en tranchées, assainissement, nivellement de terrain et chargement de camions.',
+      'Spécialiste en location tractopelle maroc et location jcb maroc : tractopelle à louer (3CX, 4CX), location trax et location de tractopelle avec chauffeur pour terrassement et fondations (حفير الساس).',
     detailedParagraph:
-      'Que vous soyez un entrepreneur BTP, un industriel ou un particulier en pleine construction dans la région Casablanca-Settat (Casablanca, Province de Berrechid, Province de Settat ou Région d’El Jadida), notre service de location de Tractopelle et JCB vous connecte en moins de 10 minutes avec l’engin disponible le plus proche. Nos machines polyvalentes assurent aussi bien l’excavation de fondations (حفير الساس) que la démolition légère au BRH et l’évacuation des déblais.',
+      'Vous cherchez une location tractopelle ou une location jcb fiable ? Notre plateforme de jcb locations (jcb location 3CX/4CX et location telescopique jcb) vous permet de louer tractopelle en moins de 10 minutes. Que ce soit pour une location tractopelle particulier (tractopelle location particulier) ou pour un grand chantier BTP souhaitant louer un tractopelle ou louer une tractopelle en urgence, nous proposons chaque tractopelle à louer en formule location de tractopelle avec chauffeur. Contactez-nous pour connaître notre location tractopelle prix et louer un tractopelle prix avantageux pour votre location trax en région Casablanca-Settat.',
     faq: [
       {
-        question: 'Quel est le délai d’intervention pour louer un Tractopelle JCB ?',
+        question: 'Quel est le tarif pour une location tractopelle prix ou louer un tractopelle prix ?',
         answer:
-          'Grâce à notre réseau de propriétaires d’engins répartis sur toute la région Casablanca-Settat (Casablanca, Berrechid, Settat, Had Soualem, El Jadida), nous identifions et mobilisons le Tractopelle JCB (3CX ou 4CX) le plus proche de votre chantier en moins de 10 minutes après votre appel.'
+          'Le tarif pour louer un tractopelle prix (ou location tractopelle prix) dépend de la durée (journée ou mois) et des accessoires (godet ou BRH). Notre service de location tractopelle maroc et location jcb maroc garantit une location de tractopelle avec chauffeur sans frais d’avance.'
       },
       {
-        question: 'Le Tractopelle est-il loué avec chauffeur et accessoires (godets, BRH) ?',
+        question: 'Proposez-vous la location tractopelle particulier et la location trax en urgence ?',
         answer:
-          'Oui, tous nos tractopelles sont fournis avec des opérateurs expérimentés ainsi que les équipements adaptés à votre sol : godets de différentes largeurs pour tranchées et fondations (حفير الساس) ou marteau brise-roche (BRH).'
+          'Oui, nous assurons aussi bien la location tractopelle particulier (tractopelle location particulier) que les prestations BTP pour louer tractopelle, louer une tractopelle, location jcb (jcb location / jcb locations), location telescopique jcb et location trax avec un tractopelle à louer disponible en 10 minutes.'
       }
     ]
   },
@@ -235,39 +285,46 @@ export const MACHINES: MachineConfig[] = [
     slug: 'location-poclain',
     id: 'poclain',
     name: 'Location Poclain & Pelle Hydraulique',
+    titlePrefix: 'Location Poclain',
     shortName: 'Poclain & Pelle',
     arabicTag: 'كراء بوكلان',
-    heroTitle: 'Location Poclain & Caterpillar en Urgence',
-    h2Title: 'Location Poclain, Caterpillar et Pelles Hydrauliques',
+    heroTitle: 'Location Poclain Maroc — Poclain Caterpillar',
+    h2Title: 'Location Poclain Maroc — Caterpillar Poclain et Pelles Hydrauliques',
     ctaLabel: 'Demander une Pelle Poclain',
     serviceType: 'Location Poclain & Pelle Hydraulique',
-    brands: 'Poclain, Caterpillar (320, 323, 330), JCB, Komatsu, Hyundai',
+    brands: 'Poclain Caterpillar, Caterpillar Poclain (320, 323, 330), JCB, Komatsu, Hyundai',
     specs: [
-      'Pelles hydrauliques sur chenilles (14T, 20T, 24T, 30T+) pour terrains difficiles',
-      'Pelles sur pneus mobiles pour interventions rapides sur voirie et zones urbaines',
-      'Équipements haute performance : godet grand volume, godet de curage et BRH lourd',
-      'Opérateurs spécialisés en gros œuvre, déroctage et terrassement profond'
+      'Service rapide de location poclain et location poclain maroc sur chenilles ou sur pneus (14T à 30T+)',
+      'Flotte haute performance poclain caterpillar et caterpillar poclain pour terrains rocheux et grands chantiers',
+      'Équipements complets : godet grand volume, godet de curage et marteau brise-roche hydraulique (BRH lourd)',
+      'Opérateurs qualifiés pour gros œuvre, déroctage, excavation profonde et démolition'
     ],
     useCases: [
-      'Terrassement de grande masse et excavation de sous-sols ou parkings (كراء بوكلان)',
-      'Déroctage au marteau brise-roche hydraulique (BRH) sur terrain rocheux',
-      'Démolition de bâtiments industriels ou structures en béton armé',
-      'Travaux d’assainissement profond, bassins de rétention et extraction en carrière'
+      'Terrassement de grande masse et excavation de sous-sols ou parkings en location poclain (كراء بوكلان)',
+      'Déroctage intensif au BRH avec engin caterpillar poclain / poclain caterpillar sur sols durs',
+      'Démolition industrielle, ouverture de tranchées VRD et travaux d’assainissement profond',
+      'Mise à disposition immédiate avec porte-char pour toute demande de location poclain maroc'
+    ],
+    semanticKeywords: [
+      'location poclain',
+      'caterpillar poclain',
+      'poclain caterpillar',
+      'location poclain maroc'
     ],
     description:
-      'Location de pelles mécaniques hydrauliques sur chenilles ou sur pneus (Poclain, Caterpillar, JCB, de 14 à 30 tonnes) équipées de godet de terrassement, godet de curage ou marteau brise-roche (BRH).',
+      'Référence en location poclain et location poclain maroc : pelles hydrauliques sur chenilles ou pneus (poclain caterpillar et caterpillar poclain de 14 à 30 tonnes) avec godet ou BRH (كراء بوكلان).',
     detailedParagraph:
-      'Pour les chantiers de gros œuvre, les terrassements profonds et l’extraction lourde (كراء بوكلان) à Casablanca, dans la Province de Berrechid, la Province de Settat et la région d’El Jadida / Jorf Lasfar, une pelle hydraulique fiable est indispensable. Nous mettons à votre disposition des pelles Poclain et Caterpillar sur chenilles ou sur pneus prêtes à travailler immédiatement, avec porte-char disponible pour un transfert rapide sur votre site.',
+      'Pour vos chantiers de gros œuvre, d’excavation profonde et d’extraction lourde (كراء بوكلان), notre service de location poclain et location poclain maroc mobilise la pelle mécanique la plus proche en moins de 10 minutes. Nous disposons d’une large gamme de machines poclain caterpillar et caterpillar poclain (sur chenilles ou sur pneus, équipées de godets ou marteau brise-roche BRH) prêtes à intervenir avec chauffeur expérimenté et transfert rapide par porte-char.',
     faq: [
       {
-        question: 'Proposez-vous des pelles Poclain sur chenilles et sur pneus avec BRH ?',
+        question: 'Proposez-vous la location poclain maroc avec des modèles poclain caterpillar ?',
         answer:
-          'Oui, nous disposons de pelles hydrauliques sur chenilles et sur pneus de 14 à plus de 30 tonnes (Caterpillar, Poclain, JCB) équipées soit de godets d’excavation, soit de marteaux brise-roche (BRH) pour le déroctage.'
+          'Oui, notre service de location poclain et location poclain maroc met à votre disposition des pelles sur chenilles et sur pneus de type caterpillar poclain et poclain caterpillar (14T à 30T+) équipées de godets d’excavation ou de marteau BRH.'
       },
       {
-        question: 'Comment se passe le transport (porte-char) de la pelle Poclain jusqu’au chantier ?',
+        question: 'Comment réserver une location poclain en urgence sur mon chantier ?',
         answer:
-          'Lors de votre appel au +212 718-187543, notre dispatching sélectionne la pelle mécanique la plus proche de votre commune (Casablanca, Berrechid, Settat, Had Soualem ou El Jadida) afin de réduire au minimum le temps et le coût de transfert par porte-char.'
+          'Appelez directement le +212 718-187543 : notre dispatching identifie le poclain caterpillar (caterpillar poclain) disponible le plus proche pour assurer votre location poclain avec un transfert porte-char immédiat.'
       }
     ]
   },
@@ -275,39 +332,66 @@ export const MACHINES: MachineConfig[] = [
     slug: 'location-manitou',
     id: 'manitou',
     name: 'Location Manitou & Chariot Élévateur Clark',
+    titlePrefix: 'Location Manitou',
     shortName: 'Manitou & Clark',
     arabicTag: 'مانيتو وكلارك',
-    heroTitle: 'Location Manitou & Clark en Urgence',
-    h2Title: 'Location Manitou & Clark — Chariot Télescopique et Élévateur',
+    heroTitle: 'Location Manitou Maroc & Location Clark',
+    h2Title: 'Location Manitou Télescopique (17m, 18m, 21m), Manuscopique & Location Clark',
     ctaLabel: 'Réserver un Manitou / Clark',
     serviceType: 'Location Manitou & Chariot Élévateur',
-    brands: 'Manitou (MT 1235, MT 1440, MT 1840, MRT 2150), JCB Loadall, Clark, Toyota',
+    brands: 'Manitou (chariot telescopique 17 m, manitou telescopique 18m, manitou rotatif 21m), Clark',
     specs: [
-      'Hauteurs de levage de 12m, 14m, 17m, 18m et jusqu’à 21m (fixes ou rotatifs)',
-      'Capacité de charge de 3,5 tonnes à 5 tonnes avec stabilisateurs hydrauliques',
-      'Accessoires disponibles : fourches à palettes, godet vrac, potence et nacelle panier',
-      'Chariots élévateurs Clark (diesel, gaz ou électriques) de 2,5T à 7T pour usines et dépôts'
+      'Large choix : manitou télescopique 17m (chariot telescopique 17 m), manitou telescopique 18m (manitou télescopique 18m) et manitou rotatif 21m',
+      'Service complet de location manitou, manitou location, location manuscopique et location chariot manuscopique',
+      'Formules souples : location manitou avec chauffeur ou sans chauffeur, et location clark (chariots élévateurs 2,5T à 7T)',
+      'Devis immédiat pour votre prix location manitou en location manitou maroc à la journée, semaine ou mois'
     ],
     useCases: [
-      'Montage de charpentes métalliques, bardage et structures industrielles',
-      'Approvisionnement d’étages en matériaux (briques, palettes de ciment, ferraillage)',
-      'Chargement et déchargement de camions semi-remorques et conteneurs',
-      'Manutention lourde en usine, plateforme logistique et chantier BTP'
+      'Levage de charpentes et bardage via location manitou telescopique, location de manitou telescopique ou location manitou rotatif',
+      'Manutention de palettes sur chantier grâce à un manitou a louer (louer un manitou / louer manitou / location d un manitou)',
+      'Intervention express pour toute recherche de location manitou autour de moi, location de telescopique manitou ou location telescopique manitou',
+      'Logistique d’usine et chargement de camions avec manitou télescopique location et location clark'
+    ],
+    semanticKeywords: [
+      'location manitou',
+      'manitou location',
+      'prix location manitou',
+      'location manuscopique',
+      'location manitou maroc',
+      'location manitou avec chauffeur',
+      'location manitou rotatif',
+      'manitou télescopique location',
+      'manitou a louer',
+      'location manitou autour de moi',
+      'location manitou telescopique',
+      'location de telescopique manitou',
+      'location d un manitou',
+      'louer un manitou',
+      'louer manitou',
+      'chariot telescopique 17 m',
+      'location chariot manuscopique',
+      'location de manitou telescopique',
+      'location telescopique manitou',
+      'manitou rotatif 21m',
+      'manitou telescopique 18m',
+      'manitou télescopique 17m',
+      'manitou télescopique 18m',
+      'location clark'
     ],
     description:
-      'Chariots télescopiques Manitou disponibles de 12m à 21m (MT 1440, MT 1840, rotatifs ou fixes) et chariots élévateurs Clark industriels, avec ou sans chauffeur.',
+      'Expert en location manitou maroc, manitou location et location clark : manitou télescopique 17m, manitou telescopique 18m, manitou rotatif 21m et location manuscopique avec chauffeur.',
     detailedParagraph:
-      'Optimisez le levage et la manutention sur vos chantiers et sites industriels dans toute la région Casablanca-Settat (Casablanca, Berrechid, Had Soualem, Settat, El Jadida et Jorf Lasfar) grâce à notre flotte de chariots télescopiques Manitou (12m à 21m) et chariots élévateurs Clark. Disponibles à la journée, à la semaine ou au mois, avec ou sans chauffeur.',
+      'Besoin d’une location manitou (manitou location) ou d’une location clark immédiate ? Notre réseau de location manitou maroc répond à toute demande de location manitou autour de moi en moins de 10 minutes. Que vous souhaitiez louer un manitou (louer manitou / location d un manitou) ou trouver un manitou a louer en formule location manitou avec chauffeur, nous proposons la location manitou telescopique (location de manitou telescopique, location de telescopique manitou, location telescopique manitou, manitou télescopique location) ainsi que la location manuscopique et location chariot manuscopique. Choisissez la hauteur idéale : chariot telescopique 17 m (manitou télescopique 17m), manitou telescopique 18m (manitou télescopique 18m) ou location manitou rotatif avec manitou rotatif 21m, au meilleur prix location manitou.',
     faq: [
       {
-        question: 'Quelles hauteurs de Manitou sont disponibles à la location ?',
+        question: 'Quelles hauteurs proposez-vous en location manitou telescopique et location manitou rotatif ?',
         answer:
-          'Nous proposons des chariots télescopiques Manitou de 12m, 14m, 18m et 21m (modèles fixes MT et rotatifs MRT), ainsi que des chariots élévateurs industriels Clark de différentes capacités.'
+          'Notre service de location manitou maroc (manitou location et manitou télescopique location) dispose de modèles chariot telescopique 17 m (manitou télescopique 17m), manitou telescopique 18m (manitou télescopique 18m) et manitou rotatif 21m, ainsi que la location manuscopique, location chariot manuscopique et location clark.'
       },
       {
-        question: 'Peut-on louer un Manitou ou un Clark à la journée ou au mois ?',
+        question: 'Comment obtenir le meilleur prix location manitou pour louer un manitou autour de moi ?',
         answer:
-          'Oui, nous proposons des formules souples adaptées aux urgences ponctuelles (location à la journée avec chauffeur) comme aux chantiers industriels longue durée (location à la semaine ou au mois).'
+          'Pour toute recherche de location manitou autour de moi, appelez le +212 718-187543. Nous vous communiquons immédiatement le prix location manitou pour louer manitou (location d un manitou / manitou a louer / location de telescopique manitou / location telescopique manitou / location de manitou telescopique) en formule location manitou avec chauffeur.'
       }
     ]
   },
@@ -315,39 +399,57 @@ export const MACHINES: MachineConfig[] = [
     slug: 'location-foreuse-de-puits',
     id: 'forage',
     name: 'Location Foreuse de Puits (Forage d’eau)',
+    titlePrefix: 'Location Foreuse Puits',
     shortName: 'Foreuse de Puits',
-    arabicTag: 'حفير البير',
-    heroTitle: 'Location Foreuse de Puits & Forage en Urgence',
-    h2Title: 'Location Foreuse de Puits — Forage d’Eau, Horizontal, Poteaux',
+    arabicTag: 'حفر الابار • حفارة ابار',
+    heroTitle: 'Location Foreuse de Puits, Sondeuse & Forage (حفر الابار)',
+    h2Title: 'Location Foreuse de Puits, Foreuse Horizontale, Hydraulique & Sondeuse (حفارة ابار)',
     ctaLabel: 'Commander une Foreuse',
     serviceType: 'Location Foreuse de Puits',
-    brands: 'Foreuses rotatives hydrauliques, ateliers de forage MFT (Marteau Fond de Trou), foreuses horizontales et tarières',
+    brands: 'Foreuse puits d eau, foreuse hydraulique, foreuse horizontale, sondeuse et tarière (حفر الابار / حفارة ابار)',
     specs: [
-      'Ateliers de forage d’eau (حفير البير) par méthode rotative (boue) et marteau fond de trou (air comprimé)',
-      'Capacité de forage toutes profondeurs (terrains argileux, calcaires ou rocheux basaltiques)',
-      'Foreuse horizontale dirigée pour traversées sous routes et voies ferrées sans tranchée',
-      'Foreuse à tarière mécanique/hydraulique sur tracteur ou pelle pour trous de poteaux et plantations'
+      'Service complet de location foreuse, foreuse de puits location, location de foreuse de puits et location Sondeuse (حفر الابار / حفارة ابار)',
+      'Ateliers spécialisés en location de foreuse pour puit, location foreuse de puit et foreuse puits d eau (rotatif et marteau fond de trou)',
+      'Équipements haute précision pour location foreuse hydraulique (foreuse hydraulique location) et location foreuse horizontale (foreuse horizontale location)',
+      'Machines dédiées à la location foreuse terre et foreuse à trou pour poteau location (clôtures, vergers, lignes électriques)'
     ],
     useCases: [
-      'Forage de puits d’eau potable ou d’irrigation agricole (حفير البير) pour fermes et villas',
-      'Tubage acier ou PVC alimentaire, développement de puits et soufflage compresseur',
-      'Forage horizontal pour passage de conduites d’eau, gaines télécom et câbles HTA/BT',
-      'Forage de trous pour poteaux électriques, clôtures périmétriques, pieux et vergers arboricoles'
+      'Forage profond et sondage d’eau (حفر الابار / حفير البير) avec حفارة ابار, foreuse puits d eau et location Sondeuse',
+      'Travaux de location de foreuse de puits (location foreuse de puit / location de foreuse pour puit / foreuse de puits location) pour agriculteurs et villas',
+      'Passage de conduites et câbles sous route sans tranchée grâce à la location foreuse horizontale (foreuse horizontale location)',
+      'Forage de pieux et clôtures via location foreuse hydraulique (foreuse hydraulique location), location foreuse terre et foreuse à trou pour poteau location'
+    ],
+    semanticKeywords: [
+      'location foreuse',
+      'foreuse de puits location',
+      'foreuse horizontale location',
+      'foreuse hydraulique location',
+      'foreuse à trou pour poteau location',
+      'location de foreuse de puits',
+      'location de foreuse pour puit',
+      'location foreuse de puit',
+      'location foreuse horizontale',
+      'location foreuse hydraulique',
+      'location foreuse terre',
+      'foreuse puits d eau',
+      'location Sondeuse',
+      'حفر الابار',
+      'حفارة ابار'
     ],
     description:
-      'Location de foreuse de puits d’eau (حفير البير) par forage rotatif et marteau fond de trou pour particuliers, exploitations agricoles et industriels, ainsi que foreuse horizontale et tarière pour poteaux.',
+      'Spécialiste en location foreuse, location de foreuse de puits (foreuse puits d eau, حفر الابار, حفارة ابار), location Sondeuse, location foreuse horizontale et foreuse à trou pour poteau location.',
     detailedParagraph:
-      'Que vous ayez besoin d’un forage de puits d’eau (حفير البير) pour alimenter une exploitation agricole dans la Chaouia (Province de Settat, Province de Berrechid) ou les Doukkala (Région d’El Jadida, Azemmour, Bir Jdid, Chtouka), d’un forage horizontal sous chaussée à Casablanca ou d’une tarière pour planter des poteaux, nous mobilisons l’atelier de forage adapté à la géologie exacte de votre terrain.',
+      'Notre plateforme assure la location foreuse et la location de foreuse de puits (foreuse de puits location, location de foreuse pour puit, location foreuse de puit) avec mobilisation rapide d’une foreuse puits d eau ou d’une location Sondeuse pour tous vos projets de حفر الابار (avec حفارة ابار performante). Nous couvrons également la location foreuse hydraulique (foreuse hydraulique location), la location foreuse horizontale (foreuse horizontale location) pour le passage de canalisations sous chaussée, ainsi que la location foreuse terre et la foreuse à trou pour poteau location pour vos clôtures, poteaux électriques et plantations agricoles.',
     faq: [
       {
-        question: 'Quels types de forage proposez-vous (puits d’eau, horizontal, poteaux) ?',
+        question: 'Quels équipements proposez-vous en location de foreuse de puits et location Sondeuse (حفر الابار) ?',
         answer:
-          'Nous couvrons 3 besoins distincts : 1) Le forage de puits d’eau (حفير البير) à grande profondeur avec tubage, 2) Le forage horizontal pour passer des câbles/canalisations sous une route sans casser le goudron, et 3) La tarière pour les trous de poteaux et arbres.'
+          'Nous proposons la location foreuse complète : foreuse de puits location (location foreuse de puit / location de foreuse pour puit / foreuse puits d eau) et location Sondeuse équipée d’une حفارة ابار moderne pour réussir vos travaux de حفر الابار sur tous terrains.'
       },
       {
-        question: 'Intervenez-vous sur les terrains agricoles et zones rurales de Casablanca-Settat ?',
+        question: 'Faites-vous aussi la location foreuse horizontale et la foreuse à trou pour poteau location ?',
         answer:
-          'Oui, nos camions et ateliers de forage sur chenilles accèdent à tous types de terrains agricoles, fermes, villas et chantiers BTP sur toute la région Casablanca-Settat : Settat, Berrechid, El Jadida, Had Soualem, Bir Jdid, Chtouka, Azemmour et périphérie de Casablanca.'
+          'Oui, en plus du forage d’eau, nous assurons la location foreuse horizontale (foreuse horizontale location), la location foreuse hydraulique (foreuse hydraulique location), la location foreuse terre et la foreuse à trou pour poteau location.'
       }
     ]
   }
@@ -369,6 +471,7 @@ export interface RouteMeta {
 }
 
 const BASE_URL = 'https://www.chantierurgence.com';
+const BUSINESS_ID = 'https://www.chantierurgence.com/business';
 const PHONE = '+212718187543';
 
 function buildFullRegionalAreaServed() {
@@ -376,27 +479,46 @@ function buildFullRegionalAreaServed() {
     {
       '@type': 'AdministrativeArea',
       name: 'Région Casablanca-Settat',
-      addressCountry: 'MA'
+      containedInPlace: {
+        '@type': 'Country',
+        name: 'Maroc'
+      }
     },
     {
       '@type': 'City',
-      name: 'Casablanca'
+      name: 'Casablanca',
+      containedInPlace: {
+        '@type': 'AdministrativeArea',
+        name: 'Région Casablanca-Settat'
+      }
     },
     {
       '@type': 'AdministrativeArea',
-      name: 'Province de Berrechid'
+      name: 'Province de Berrechid',
+      containedInPlace: {
+        '@type': 'Country',
+        name: 'Maroc'
+      }
     },
     {
       '@type': 'AdministrativeArea',
-      name: 'Province de Settat'
+      name: 'Province de Settat',
+      containedInPlace: {
+        '@type': 'Country',
+        name: 'Maroc'
+      }
     },
     {
       '@type': 'AdministrativeArea',
-      name: 'Province d’El Jadida'
+      name: 'Province d’El Jadida',
+      containedInPlace: {
+        '@type': 'Country',
+        name: 'Maroc'
+      }
     },
     {
       '@type': 'GeoCircle',
-      name: 'Zone d’intervention Grand Casablanca, Berrechid, Settat & El Jadida',
+      name: 'Zone d’intervention Région Casablanca-Settat, Berrechid, Settat & El Jadida',
       geoMidpoint: {
         '@type': 'GeoCoordinates',
         latitude: 33.3600,
@@ -428,26 +550,36 @@ export function getRouteMeta(rawPath: string): RouteMeta {
     ? CITIES.find((c) => c.slug === segments[1])
     : undefined;
 
-  // Case 1: Specific Machine + Specific City/Province/Region
+  // Case 1: Specific Machine + Specific City/Province/Region (/location-*/*)
   if (matchedMachine && matchedCity) {
     const canonicalUrl = `${BASE_URL}/${matchedMachine.slug}/${matchedCity.slug}`;
-    const title = `${matchedMachine.name} à ${matchedCity.name} | Urgence 24/7 ChantierUrgence`;
-    const description = `${matchedMachine.name} à ${matchedCity.name} (${matchedMachine.arabicTag}) — Région Casablanca-Settat. Intervention rapide en 10 min avec ou sans chauffeur (${matchedCity.nearbyAreas.slice(0, 3).join(', ')}). Tél : +212 718-187543.`;
-    const h1Main = `${matchedMachine.name} à ${matchedCity.name}`;
-    const h1Sub = `Disponibilité immédiate 24/7 pour vos chantiers à ${matchedCity.name} et ${matchedCity.nearbyAreas.slice(0, 3).join(', ')} (${matchedMachine.brands}) — Mise en relation en 10 minutes.`;
+    // Strictly 50–60 chars max:
+    const title = `${matchedMachine.titlePrefix} ${matchedCity.titleLoc} | ChantierUrgence`;
+    // Strictly 130–155 chars with CTA & phone number near the beginning:
+    const description = `Appelez le +212 718-187543 : ${matchedMachine.titlePrefix} ${matchedCity.locative} en 10 min. Dispo 24/7 avec chauffeur, zéro avance.`;
+
+    const h1Main = `${matchedMachine.name} ${matchedCity.locative}`;
+    const h1Sub = `Disponibilité immédiate 24/7 pour vos chantiers ${matchedCity.locative} et ${matchedCity.nearbyAreas.slice(0, 3).join(', ')} (${matchedMachine.brands}) — Mise en relation en 10 minutes.`;
 
     const cityAreaServed = [
       {
         '@type': matchedCity.schemaType,
-        name: matchedCity.name
+        name: matchedCity.name,
+        ...(matchedCity.schemaType === 'AdministrativeArea'
+          ? { containedInPlace: { '@type': 'Country', name: 'Maroc' } }
+          : {})
       },
       {
         '@type': 'AdministrativeArea',
-        name: matchedCity.region
+        name: matchedCity.region,
+        containedInPlace: {
+          '@type': 'Country',
+          name: 'Maroc'
+        }
       },
       {
         '@type': 'GeoCircle',
-        name: `Rayon d'intervention ${matchedMachine.shortName} autour de ${matchedCity.name}`,
+        name: `Rayon d'intervention ${matchedMachine.shortName} (${matchedCity.name})`,
         geoMidpoint: {
           '@type': 'GeoCoordinates',
           latitude: matchedCity.lat,
@@ -463,14 +595,13 @@ export function getRouteMeta(rawPath: string): RouteMeta {
       '@graph': [
         {
           '@type': ['HomeAndConstructionBusiness', 'EmergencyService'],
-          '@id': `${canonicalUrl}#business`,
-          name: `ChantierUrgence — ${matchedMachine.name} à ${matchedCity.name}`,
-          url: canonicalUrl,
+          '@id': BUSINESS_ID,
+          name: 'ChantierUrgence',
+          url: `${BASE_URL}/`,
           image: `${BASE_URL}/favicon.png`,
           logo: `${BASE_URL}/favicon.png`,
           telephone: PHONE,
           priceRange: '$$',
-          description,
           address: {
             '@type': 'PostalAddress',
             addressLocality: matchedCity.name,
@@ -482,48 +613,34 @@ export function getRouteMeta(rawPath: string): RouteMeta {
             latitude: matchedCity.lat,
             longitude: matchedCity.lng
           },
-          serviceArea: {
-            '@type': 'GeoCircle',
-            geoMidpoint: {
-              '@type': 'GeoCoordinates',
-              latitude: matchedCity.lat,
-              longitude: matchedCity.lng
-            },
-            geoRadius: String(matchedCity.radiusMeters)
-          },
           openingHoursSpecification: {
             '@type': 'OpeningHoursSpecification',
             dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
             opens: '00:00',
             closes: '23:59'
           },
+          areaServed: cityAreaServed
+        },
+        {
+          '@type': 'Service',
+          '@id': `${canonicalUrl}#service`,
+          name: `${matchedMachine.name} ${matchedCity.locative}`,
+          url: canonicalUrl,
+          serviceType: matchedMachine.serviceType,
+          description: `${matchedMachine.description} Intervention rapide ${matchedCity.locative} (${matchedCity.region}).`,
+          provider: {
+            '@id': BUSINESS_ID
+          },
           areaServed: cityAreaServed,
-          serviceType: [
-            matchedMachine.serviceType,
-            `${matchedMachine.name} ${matchedCity.name}`,
-            `${matchedMachine.shortName} Casablanca-Settat`
-          ],
-          hasOfferCatalog: {
-            '@type': 'OfferCatalog',
-            name: `${matchedMachine.name} à ${matchedCity.name}`,
-            itemListElement: [
-              {
-                '@type': 'Offer',
-                areaServed: cityAreaServed,
-                itemOffered: {
-                  '@type': 'Service',
-                  name: `${matchedMachine.name} à ${matchedCity.name}`,
-                  serviceType: matchedMachine.serviceType,
-                  provider: {
-                    '@type': 'HomeAndConstructionBusiness',
-                    name: 'ChantierUrgence',
-                    telephone: PHONE
-                  },
-                  areaServed: cityAreaServed,
-                  description: `${matchedMachine.description} Intervention rapide à ${matchedCity.name} (${matchedCity.region}) et communes avoisinantes.`
-                }
-              }
-            ]
+          offers: {
+            '@type': 'Offer',
+            url: canonicalUrl,
+            priceCurrency: 'MAD',
+            availability: 'https://schema.org/InStock',
+            areaServed: {
+              '@type': matchedCity.schemaType,
+              name: matchedCity.name
+            }
           }
         },
         {
@@ -531,7 +648,7 @@ export function getRouteMeta(rawPath: string): RouteMeta {
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${BASE_URL}/` },
             { '@type': 'ListItem', position: 2, name: matchedMachine.name, item: `${BASE_URL}/${matchedMachine.slug}` },
-            { '@type': 'ListItem', position: 3, name: `${matchedMachine.shortName} à ${matchedCity.name}`, item: canonicalUrl }
+            { '@type': 'ListItem', position: 3, name: `${matchedMachine.shortName} ${matchedCity.locative}`, item: canonicalUrl }
           ]
         },
         {
@@ -541,7 +658,7 @@ export function getRouteMeta(rawPath: string): RouteMeta {
             name: `${q.question} (${matchedCity.name})`,
             acceptedAnswer: {
               '@type': 'Answer',
-              text: `${q.answer} Service disponible 24/7 à ${matchedCity.name} et dans toute la région Casablanca-Settat.`
+              text: `${q.answer} Service disponible 24/7 ${matchedCity.locative} et dans toute la région Casablanca-Settat.`
             }
           }))
         }
@@ -564,13 +681,15 @@ export function getRouteMeta(rawPath: string): RouteMeta {
     };
   }
 
-  // Case 2: Specific Machine across all of Casablanca-Settat
+  // Case 2: Specific Machine Hub Page (/location-*)
   if (matchedMachine && !matchedCity) {
     const canonicalUrl = `${BASE_URL}/${matchedMachine.slug}`;
-    const title = `${matchedMachine.name} | Casablanca, Berrechid, Settat, El Jadida & Had Soualem`;
-    const description = `${matchedMachine.name} (${matchedMachine.arabicTag}) disponible en 10 min dans la région Casablanca-Settat : Casablanca, Province de Berrechid, Province de Settat, El Jadida et Had Soualem. Tél : +212 718-187543.`;
+    // Strictly 50–58 chars:
+    const title = `${matchedMachine.titlePrefix} au Maroc 24/7 | ChantierUrgence`;
+    // Strictly 135–152 chars with phone number near the beginning:
+    const description = `Appelez le +212 718-187543 : ${matchedMachine.titlePrefix} en 10 min à Had Soualem, Berrechid, Settat et El Jadida. Dispo 24/7 avec chauffeur.`;
     const h1Main = matchedMachine.heroTitle;
-    const h1Sub = `${matchedMachine.name} (${matchedMachine.brands}) disponible immédiatement sur Casablanca, Had Soualem, Province de Berrechid, Province de Settat, Région d’El Jadida et Jorf Lasfar.`;
+    const h1Sub = `${matchedMachine.name} (${matchedMachine.brands}) disponible immédiatement sur Had Soualem, Province de Berrechid, Province de Settat, Région d’El Jadida et Jorf Lasfar.`;
 
     const fullAreaServed = buildFullRegionalAreaServed();
 
@@ -579,9 +698,9 @@ export function getRouteMeta(rawPath: string): RouteMeta {
       '@graph': [
         {
           '@type': ['HomeAndConstructionBusiness', 'EmergencyService'],
-          '@id': `${canonicalUrl}#business`,
-          name: `ChantierUrgence — ${matchedMachine.name} (Casablanca-Settat)`,
-          url: canonicalUrl,
+          '@id': BUSINESS_ID,
+          name: 'ChantierUrgence',
+          url: `${BASE_URL}/`,
           image: `${BASE_URL}/favicon.png`,
           logo: `${BASE_URL}/favicon.png`,
           telephone: PHONE,
@@ -615,7 +734,19 @@ export function getRouteMeta(rawPath: string): RouteMeta {
             closes: '23:59'
           },
           areaServed: fullAreaServed,
-          serviceType: [matchedMachine.serviceType, `${matchedMachine.name} Casablanca-Settat`],
+          serviceType: [matchedMachine.serviceType, `${matchedMachine.name} Casablanca-Settat`]
+        },
+        {
+          '@type': 'Service',
+          '@id': `${canonicalUrl}#service`,
+          name: matchedMachine.name,
+          url: canonicalUrl,
+          serviceType: matchedMachine.serviceType,
+          description: matchedMachine.description,
+          provider: {
+            '@id': BUSINESS_ID
+          },
+          areaServed: fullAreaServed,
           hasOfferCatalog: {
             '@type': 'OfferCatalog',
             name: `${matchedMachine.name} — Région Casablanca-Settat`,
@@ -632,10 +763,10 @@ export function getRouteMeta(rawPath: string): RouteMeta {
               },
               itemOffered: {
                 '@type': 'Service',
-                name: `${matchedMachine.name} à ${c.name}`,
+                name: `${matchedMachine.name} ${c.locative}`,
                 url: `${BASE_URL}/${matchedMachine.slug}/${c.slug}`,
                 areaServed: { '@type': c.schemaType, name: c.name },
-                description: `${matchedMachine.description} Intervention immédiate à ${c.name} (${c.region}).`
+                description: `${matchedMachine.description} Intervention immédiate ${c.locative}.`
               }
             }))
           }
@@ -678,9 +809,11 @@ export function getRouteMeta(rawPath: string): RouteMeta {
 
   // Case 3: Default Home Page (/)
   const canonicalUrl = `${BASE_URL}/`;
-  const title = 'Location Tractopelle, JCB, Poclain, Manitou & Foreuse | Casablanca-Settat, El Jadida, Berrechid';
+  // Strictly 57 chars:
+  const title = 'Location Tractopelle, Poclain & Manitou | ChantierUrgence';
+  // Strictly 151 chars with phone number near the beginning:
   const description =
-    "Location d'urgence 24/7 d'engins BTP (Tractopelle JCB, Poclain, Manitou, Clark, Foreuse de puits) dans la région Casablanca-Settat : Casablanca, Had Soualem, Province de Berrechid, Province de Settat et Région d'El Jadida. Tél : +212 718-187543.";
+    'Appelez le +212 718-187543 : Location Tractopelle JCB, Poclain, Manitou et Foreuse de puits en 10 min à Berrechid, Settat, Had Soualem et El Jadida.';
   const h1Main = 'Machine en panne dans votre chantier ?';
   const h1Sub =
     "Location d'urgence : Tractopelle & JCB, Poclain, Manitou, Clark, Foreuse de puits ou Caterpillar.";
@@ -692,7 +825,7 @@ export function getRouteMeta(rawPath: string): RouteMeta {
     '@graph': [
       {
         '@type': ['HomeAndConstructionBusiness', 'EmergencyService'],
-        '@id': `${BASE_URL}/#business`,
+        '@id': BUSINESS_ID,
         name: 'ChantierUrgence',
         url: canonicalUrl,
         image: `${BASE_URL}/favicon.png`,
@@ -700,7 +833,7 @@ export function getRouteMeta(rawPath: string): RouteMeta {
         telephone: PHONE,
         priceRange: '$$',
         description:
-          "Plateforme de location d'urgence et dispatching d'engins BTP dans la région Casablanca-Settat (Casablanca, Province de Berrechid, Province de Settat, Région d'El Jadida, Had Soualem, Jorf Lasfar) : Location Tractopelle & JCB, Location Poclain & Caterpillar, Location Manitou & Clark, et Location Foreuse de puits.",
+          "Plateforme de location d'urgence et dispatching d'engins BTP dans la région Casablanca-Settat (Province de Berrechid, Province de Settat, Région d'El Jadida, Had Soualem, Jorf Lasfar) : Location Tractopelle & JCB, Location Poclain & Caterpillar, Location Manitou & Clark, et Location Foreuse de puits.",
         address: {
           '@type': 'PostalAddress',
           addressLocality: 'Had Soualem',
@@ -716,7 +849,7 @@ export function getRouteMeta(rawPath: string): RouteMeta {
         serviceArea: [
           {
             '@type': 'GeoCircle',
-            name: 'Couverture BTP Région Casablanca-Settat (Casablanca, Berrechid, Settat, El Jadida)',
+            name: 'Couverture BTP Région Casablanca-Settat (Berrechid, Settat, El Jadida, Had Soualem)',
             geoMidpoint: {
               '@type': 'GeoCoordinates',
               latitude: 33.3600,
@@ -759,8 +892,12 @@ export function getRouteMeta(rawPath: string): RouteMeta {
             areaServed: fullAreaServed,
             itemOffered: {
               '@type': 'Service',
+              '@id': `${BASE_URL}/${m.slug}#service`,
               name: m.name,
               url: `${BASE_URL}/${m.slug}`,
+              provider: {
+                '@id': BUSINESS_ID
+              },
               areaServed: fullAreaServed,
               description: m.description
             }
@@ -776,7 +913,7 @@ export function getRouteMeta(rawPath: string): RouteMeta {
             name: 'Quelles régions et provinces couvrez-vous pour la location de Tractopelle, Poclain, Manitou et Foreuse ?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: "Notre service de dispatching d'urgence couvre toute la région Casablanca-Settat : Casablanca, la Province de Berrechid (Berrechid, Had Soualem, Sidi Rahal, Deroua, El Gara), la Province de Settat (Settat, Ben Ahmed, El Borouj) et la Région d'El Jadida (El Jadida, Jorf Lasfar, Azemmour, Bir Jdid, Chtouka, Moulay Abdellah)."
+              text: "Notre service de dispatching d'urgence couvre toute la région Casablanca-Settat : la Province de Berrechid (Berrechid, Had Soualem, Sidi Rahal, Deroua, El Gara), la Province de Settat (Settat, Ben Ahmed, El Borouj) et la Région d'El Jadida (El Jadida, Jorf Lasfar, Azemmour, Bir Jdid, Chtouka, Moulay Abdellah)."
             }
           },
           {
@@ -784,7 +921,7 @@ export function getRouteMeta(rawPath: string): RouteMeta {
             name: 'Quels engins de chantier sont disponibles à la location en urgence ?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: "Nous proposons la location immédiate (en moins de 10 minutes) de Tractopelle JCB (3CX/4CX), Poclain et pelles hydrauliques Caterpillar sur chenilles ou pneus (avec godet ou BRH), chariots télescopiques Manitou (12m à 21m), chariots élévateurs Clark et foreuses de puits d'eau."
+              text: "Nous proposons la location immédiate (en moins de 10 minutes) de Tractopelle JCB (location jcb maroc, location trax), Poclain et pelles hydrauliques (location poclain maroc, poclain caterpillar), chariots télescopiques Manitou (chariot telescopique 17 m, manitou telescopique 18m, manitou rotatif 21m, location clark) et foreuses de puits d'eau (location de foreuse de puits, location Sondeuse, حفر الابار)."
             }
           }
         ]
