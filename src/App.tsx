@@ -248,7 +248,13 @@ export default function App({ initialPath }: AppProps) {
 
                 {activeCity ? (
                   <p className="text-gray-700 leading-relaxed mb-6">
-                    Pour votre besoin de <strong>{activeMachine.name.toLowerCase()}</strong>{' '}
+                    Pour votre besoin de <strong>{activeMachine.name.toLowerCase()}</strong>
+                    {activeMachine.slug === 'location-tractopelle' && (
+                      <>
+                        {' '}
+                        (<strong>location trax</strong> et <strong>location trax maroc</strong>)
+                      </>
+                    )}{' '}
                     <strong>{activeCity.locative}</strong> ({activeCity.region}), nos équipes couvrent{' '}
                     {activeCity.industrialNote}, ainsi que les axes menant vers{' '}
                     <strong>{activeCity.nearbyAreas.join(', ')}</strong>. Que votre chantier soit à l'arrêt suite à une
@@ -260,7 +266,14 @@ export default function App({ initialPath }: AppProps) {
                   </p>
                 ) : (
                   <p className="text-gray-700 leading-relaxed mb-6">
-                    Notre réseau couvre l'ensemble du corridor stratégique{' '}
+                    Notre réseau
+                    {activeMachine.slug === 'location-tractopelle' && (
+                      <>
+                        {' '}
+                        de <strong>location trax</strong> et <strong>location trax maroc</strong>
+                      </>
+                    )}{' '}
+                    couvre l'ensemble du corridor stratégique{' '}
                     <strong>
                       Had Soualem, Berrechid, Settat, El Jadida, Jorf Lasfar, Bir Jdid, Azemmour, Chtouka et Sidi Rahal
                     </strong>
@@ -467,11 +480,11 @@ export default function App({ initialPath }: AppProps) {
                   onClick={navigate('/location-tractopelle')}
                   className="hover:text-yellow-600 transition-colors"
                 >
-                  Location Tractopelle &amp; JCB — Terrassement et Dépannage
+                  Location Tractopelle, JCB &amp; Location Trax Maroc — Terrassement et Dépannage
                 </a>
               </h2>
               <p className="leading-relaxed text-gray-600 mb-4">
-                Spécialiste en <strong>location tractopelle maroc</strong> et <strong>location jcb maroc</strong> : que vous souhaitiez <strong>louer un tractopelle</strong>, <strong>louer une tractopelle</strong> ou trouver un <strong>tractopelle à louer</strong> en formule <strong>location de tractopelle avec chauffeur</strong> (ou <strong>location tractopelle particulier</strong> / <strong>tractopelle location particulier</strong>), notre service de <strong>jcb locations</strong> (<strong>location jcb</strong>, <strong>jcb location</strong> 3CX/4CX, <strong>location telescopique jcb</strong> et <strong>location trax</strong>) assure vos travaux de terrassement et fondations (حفير الساس) au meilleur <strong>location tractopelle prix</strong> (<strong>louer un tractopelle prix</strong> compétitif).
+                Spécialiste en <strong>location tractopelle maroc</strong>, <strong>location jcb maroc</strong> et <strong>location trax maroc</strong> : que vous souhaitiez <strong>louer un tractopelle</strong>, <strong>louer une tractopelle</strong> ou trouver un <strong>tractopelle à louer</strong> en formule <strong>location de tractopelle avec chauffeur</strong> (ou <strong>location tractopelle particulier</strong> / <strong>tractopelle location particulier</strong>), notre service de <strong>jcb locations</strong> (<strong>location jcb</strong>, <strong>jcb location</strong> 3CX/4CX, <strong>location telescopique jcb</strong>, <strong>location trax</strong> et <strong>location trax maroc</strong>) assure vos travaux de terrassement et fondations (حفير الساس) au meilleur <strong>location tractopelle prix</strong> (<strong>louer un tractopelle prix</strong> compétitif).
               </p>
               <div className="flex flex-wrap gap-1.5 mb-6">
                 {CITIES.map((c) => (

@@ -229,10 +229,10 @@ export const MACHINES: MachineConfig[] = [
     shortName: 'Tractopelle & JCB',
     arabicTag: 'حفير الساس',
     heroTitle: 'Location Tractopelle & JCB Maroc (Location Trax)',
-    h2Title: 'Location Tractopelle & JCB Maroc — Louer un Tractopelle avec Chauffeur',
+    h2Title: 'Location Tractopelle, JCB & Location Trax Maroc — Location Trax avec Chauffeur',
     ctaLabel: 'Demander un Tractopelle JCB',
     serviceType: 'Location Tractopelle & JCB',
-    brands: 'JCB 3CX, JCB 4CX, Caterpillar 428 / 432, CASE (location trax)',
+    brands: 'JCB 3CX, JCB 4CX, Caterpillar 428 / 432, CASE (location trax / location trax maroc)',
     specs: [
       'Service complet de jcb locations, location jcb et jcb location (3CX / 4CX) ainsi que location telescopique jcb',
       'Formules flexibles : location de tractopelle avec chauffeur, location tractopelle particulier et tractopelle location particulier',
@@ -242,8 +242,8 @@ export const MACHINES: MachineConfig[] = [
     useCases: [
       'Ouverture de fondations et fouilles en rigoles (حفير الساس) avec tractopelle à louer immédiatement',
       'Possibilité de louer tractopelle, louer un tractopelle ou louer une tractopelle pour tranchées et assainissement',
-      'Nivellement de terrain, décapage, remblayage et location trax pour chargement de camions',
-      'Dépannage urgent 24/7 pour tout besoin de location tractopelle maroc et location jcb maroc'
+      'Nivellement de terrain, décapage, remblayage et location trax (location trax maroc) pour chargement de camions',
+      'Dépannage urgent 24/7 pour tout besoin de location tractopelle maroc, location jcb maroc et location trax maroc'
     ],
     semanticKeywords: [
       'jcb locations',
@@ -262,22 +262,23 @@ export const MACHINES: MachineConfig[] = [
       'tractopelle à louer',
       'location tractopelle prix',
       'louer un tractopelle prix',
-      'location trax'
+      'location trax',
+      'location trax maroc'
     ],
     description:
-      'Spécialiste en location tractopelle maroc et location jcb maroc : tractopelle à louer (3CX, 4CX), location trax et location de tractopelle avec chauffeur pour terrassement et fondations (حفير الساس).',
+      'Spécialiste en location tractopelle maroc, location jcb maroc et location trax maroc : tractopelle à louer (3CX, 4CX), location trax et location de tractopelle avec chauffeur pour terrassement et fondations (حفير الساس).',
     detailedParagraph:
-      'Vous cherchez une location tractopelle ou une location jcb fiable ? Notre plateforme de jcb locations (jcb location 3CX/4CX et location telescopique jcb) vous permet de louer tractopelle rapidement. Que ce soit pour une location tractopelle particulier (tractopelle location particulier) ou pour un grand chantier BTP souhaitant louer un tractopelle ou louer une tractopelle en urgence, nous proposons chaque tractopelle à louer en formule location de tractopelle avec chauffeur. Contactez-nous pour connaître notre location tractopelle prix et louer un tractopelle prix avantageux pour votre location trax en région Casablanca-Settat.',
+      'Vous cherchez une location tractopelle, une location jcb ou une location trax maroc fiable ? Notre plateforme de jcb locations (jcb location 3CX/4CX, location telescopique jcb et location trax) vous permet de louer tractopelle rapidement. Que ce soit pour une location tractopelle particulier (tractopelle location particulier) ou pour un grand chantier BTP souhaitant louer un tractopelle ou louer une tractopelle en urgence, nous proposons chaque tractopelle à louer en formule location de tractopelle avec chauffeur. Contactez-nous pour connaître notre location tractopelle prix et louer un tractopelle prix avantageux pour votre location trax et location trax maroc en région Casablanca-Settat.',
     faq: [
       {
-        question: 'Quel est le tarif pour une location tractopelle prix ou louer un tractopelle prix ?',
+        question: 'Quel est le tarif pour une location tractopelle prix, louer un tractopelle prix ou une location trax maroc ?',
         answer:
-          'Le tarif pour louer un tractopelle prix (ou location tractopelle prix) dépend de la durée (journée ou mois) et des accessoires (godet ou BRH). Notre service de location tractopelle maroc et location jcb maroc garantit une location de tractopelle avec chauffeur sans frais d’avance.'
+          'Le tarif pour louer un tractopelle prix (location tractopelle prix ou location trax) dépend de la durée (journée ou mois) et des accessoires (godet ou BRH). Notre service de location tractopelle maroc, location jcb maroc et location trax maroc garantit une location de tractopelle avec chauffeur sans frais d’avance.'
       },
       {
-        question: 'Proposez-vous la location tractopelle particulier et la location trax en urgence ?',
+        question: 'Proposez-vous la location tractopelle particulier, la location trax et la location trax maroc en urgence ?',
         answer:
-          'Oui, nous assurons aussi bien la location tractopelle particulier (tractopelle location particulier) que les prestations BTP pour louer tractopelle, louer une tractopelle, location jcb (jcb location / jcb locations), location telescopique jcb et location trax avec un tractopelle à louer disponible immédiatement.'
+          'Oui, nous assurons aussi bien la location tractopelle particulier (tractopelle location particulier) que les prestations BTP pour louer tractopelle, louer une tractopelle, location jcb (jcb location / jcb locations), location telescopique jcb, location trax et location trax maroc avec un tractopelle à louer disponible immédiatement.'
       }
     ]
   },
@@ -882,6 +883,8 @@ export function getRouteMeta(rawPath: string): RouteMeta {
         serviceType: [
           'Location Tractopelle',
           'Location JCB',
+          'Location Trax',
+          'Location Trax Maroc',
           'Location Poclain',
           'Location Manitou',
           'Location Clark',
@@ -925,7 +928,7 @@ export function getRouteMeta(rawPath: string): RouteMeta {
             name: 'Quels engins de chantier sont disponibles à la location en urgence ?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: "Nous proposons la location immédiate de Tractopelle JCB (location jcb maroc, location trax), Poclain et pelles hydrauliques (location poclain maroc, poclain caterpillar), chariots télescopiques Manitou (chariot telescopique 17 m, manitou telescopique 18m, manitou rotatif 21m, location clark) et foreuses de puits d'eau (location de foreuse de puits, location Sondeuse, حفر الابار)."
+              text: "Nous proposons la location immédiate de Tractopelle JCB (location jcb maroc, location trax, location trax maroc), Poclain et pelles hydrauliques (location poclain maroc, poclain caterpillar), chariots télescopiques Manitou (chariot telescopique 17 m, manitou telescopique 18m, manitou rotatif 21m, location clark) et foreuses de puits d'eau (location de foreuse de puits, location Sondeuse, حفر الابار)."
             }
           }
         ]
