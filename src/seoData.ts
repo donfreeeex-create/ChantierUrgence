@@ -738,8 +738,7 @@ export function getRouteMeta(rawPath: string): RouteMeta {
             opens: '00:00',
             closes: '23:59'
           },
-          areaServed: fullAreaServed,
-          serviceType: [matchedMachine.serviceType, `${matchedMachine.name} Casablanca-Settat`]
+          areaServed: fullAreaServed
         },
         {
           '@type': 'Service',
@@ -880,17 +879,6 @@ export function getRouteMeta(rawPath: string): RouteMeta {
           closes: '23:59'
         },
         areaServed: fullAreaServed,
-        serviceType: [
-          'Location Tractopelle',
-          'Location JCB',
-          'Location Trax',
-          'Location Trax Maroc',
-          'Location Poclain',
-          'Location Manitou',
-          'Location Clark',
-          'Location Caterpillar',
-          'Location Foreuse de Puits'
-        ],
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
           name: 'Catalogue Location Engins de Chantier BTP — Région Casablanca-Settat',
@@ -901,6 +889,7 @@ export function getRouteMeta(rawPath: string): RouteMeta {
               '@type': 'Service',
               '@id': `${BASE_URL}/${m.slug}#service`,
               name: m.name,
+              serviceType: m.serviceType,
               url: `${BASE_URL}/${m.slug}`,
               provider: {
                 '@id': BUSINESS_ID
