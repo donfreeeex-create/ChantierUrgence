@@ -289,43 +289,47 @@ export const MACHINES: MachineConfig[] = [
     titlePrefix: 'Location Poclain',
     shortName: 'Poclain & Pelle',
     arabicTag: 'كراء بوكلان',
-    heroTitle: 'Location Poclain Maroc — Poclain Caterpillar',
-    h2Title: 'Location Poclain Maroc — Caterpillar Poclain et Pelles Hydrauliques',
+    heroTitle: 'Location Poclain Maroc — Poclain Machine, Poclain Cat & Komatsu Poclain',
+    h2Title: 'Location Poclain et Poclain Machine au Maroc : Tarifs et Disponibilité',
     ctaLabel: 'Demander une Pelle Poclain',
     serviceType: 'Location Poclain & Pelle Hydraulique',
-    brands: 'Poclain Caterpillar, Caterpillar Poclain (320, 323, 330), JCB, Komatsu, Hyundai',
+    brands: 'poclain, poclain machine, poclain cat, komatsu poclain (avec chauffeur poclain)',
     specs: [
-      'Service rapide de location poclain et location poclain maroc sur chenilles ou sur pneus (14T à 30T+)',
-      'Flotte haute performance poclain caterpillar et caterpillar poclain pour terrains rocheux et grands chantiers',
-      'Équipements complets : godet grand volume, godet de curage et marteau brise-roche hydraulique (BRH lourd)',
-      'Opérateurs qualifiés pour gros œuvre, déroctage, excavation profonde et démolition'
+      'Service rapide de location de poclain et poclain machine sur chenilles ou sur pneus (14T à 30T+)',
+      'Flotte haute performance poclain cat et komatsu poclain avec chauffeur poclain qualifié',
+      'Tarification transparente : le meilleur poclain prix maroc pour vos chantiers sans immobiliser de budget dans une poclain a vendre maroc',
+      'Alternative professionnelle garantie aux annonces de particulier type avito poclain avec godet grand volume et marteau BRH'
     ],
     useCases: [
-      'Terrassement de grande masse et excavation de sous-sols ou parkings en location poclain (كراء بوكلان)',
-      'Déroctage intensif au BRH avec engin caterpillar poclain / poclain caterpillar sur sols durs',
-      'Démolition industrielle, ouverture de tranchées VRD et travaux d’assainissement profond',
-      'Mise à disposition immédiate avec porte-char pour toute demande de location poclain maroc'
+      'Terrassement de grande masse et excavation profonde avec poclain machine et chauffeur poclain (كراء بوكلان)',
+      'Déroctage intensif et gros œuvre avec poclain cat ou komatsu poclain sur sols rocheux',
+      'Location clé en main au meilleur poclain prix maroc, plus rentable et immédiate que l’achat d’une poclain a vendre maroc',
+      'Disponibilité 24/7 vérifiée contrairement aux offres aléatoires sur avito poclain'
     ],
     semanticKeywords: [
-      'location poclain',
-      'caterpillar poclain',
-      'poclain caterpillar',
-      'location poclain maroc'
+      'poclain',
+      'poclain machine',
+      'poclain prix maroc',
+      'poclain cat',
+      'avito poclain',
+      'komatsu poclain',
+      'chauffeur poclain',
+      'poclain a vendre maroc'
     ],
     description:
-      'Référence en location poclain et location poclain maroc : pelles hydrauliques sur chenilles ou pneus (poclain caterpillar et caterpillar poclain de 14 à 30 tonnes) avec godet ou BRH (كراء بوكلان).',
+      'Vous cherchez les meilleures offres de location de poclain machine, poclain cat, ou komatsu poclain au meilleur poclain prix maroc ? Engins récents avec chauffeur poclain qualifié (كراء بوكلان).',
     detailedParagraph:
-      'Pour vos chantiers de gros œuvre, d’excavation profonde et d’extraction lourde (كراء بوكلان), notre service de location poclain et location poclain maroc mobilise rapidement la pelle mécanique la plus proche. Nous disposons d’une large gamme de machines poclain caterpillar et caterpillar poclain (sur chenilles ou sur pneus, équipées de godets ou marteau brise-roche BRH) prêtes à intervenir avec chauffeur expérimenté et transfert rapide par porte-char.',
+      'Vous cherchez les meilleures offres de location de poclain machine, poclain cat, ou komatsu poclain au meilleur poclain prix maroc ? Nous mettons à votre disposition des engins récents avec chauffeur poclain qualifié pour tous vos chantiers. Plutôt que d’immobiliser votre capital dans une poclain a vendre maroc ou de perdre du temps sur des annonces non vérifiées comme avito poclain, optez pour une location de poclain professionnelle clé en main avec maintenance et opérateur inclus.',
     faq: [
       {
-        question: 'Proposez-vous la location poclain maroc avec des modèles poclain caterpillar ?',
+        question: 'Où trouver une poclain machine fiable au meilleur poclain prix maroc ?',
         answer:
-          'Oui, notre service de location poclain et location poclain maroc met à votre disposition des pelles sur chenilles et sur pneus de type caterpillar poclain et poclain caterpillar (14T à 30T+) équipées de godets d’excavation ou de marteau BRH.'
+          "Contrairement aux annonces sur les plateformes comme avito poclain, ChantierUrgence vous garantit une poclain cat ou komatsu poclain professionnelle avec chauffeur poclain et intervention d'urgence en 10 min."
       },
       {
-        question: 'Comment réserver une location poclain en urgence sur mon chantier ?',
+        question: 'Pourquoi louer une poclain avec chauffeur poclain plutôt que chercher une poclain a vendre maroc ?',
         answer:
-          'Appelez directement le +212 718-187543 : notre dispatching identifie le poclain caterpillar (caterpillar poclain) disponible le plus proche pour assurer votre location poclain avec un transfert porte-char immédiat.'
+          'Acquérir une poclain a vendre maroc (ou via avito poclain) implique des coûts élevés de maintenance, de transport porte-char et de recrutement d’un chauffeur poclain. Notre service vous fournit immédiatement une poclain machine (poclain cat ou komatsu poclain) au meilleur poclain prix maroc.'
       }
     ]
   },
@@ -917,7 +921,7 @@ export function getRouteMeta(rawPath: string): RouteMeta {
             name: 'Quels engins de chantier sont disponibles à la location en urgence ?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: "Nous proposons la location immédiate de Tractopelle JCB (location jcb maroc, location trax, location trax maroc), Poclain et pelles hydrauliques (location poclain maroc, poclain caterpillar), chariots télescopiques Manitou (chariot telescopique 17 m, manitou telescopique 18m, manitou rotatif 21m, location clark) et foreuses de puits d'eau (location de foreuse de puits, location Sondeuse, حفر الابار)."
+              text: "Nous proposons la location immédiate de Tractopelle JCB (location jcb maroc, location trax, location trax maroc), poclain et poclain machine (poclain cat, komatsu poclain avec chauffeur poclain au meilleur poclain prix maroc), chariots télescopiques Manitou (chariot telescopique 17 m, manitou telescopique 18m, manitou rotatif 21m, location clark) et foreuses de puits d'eau (location de foreuse de puits, location Sondeuse, حفر الابار)."
             }
           }
         ]

@@ -254,6 +254,14 @@ export default function App({ initialPath }: AppProps) {
                         {' '}
                         (<strong>location trax</strong> et <strong>location trax maroc</strong>)
                       </>
+                    )}
+                    {activeMachine.slug === 'location-poclain' && (
+                      <>
+                        {' '}
+                        (<strong>poclain</strong>, <strong>poclain machine</strong>, <strong>poclain cat</strong> et{' '}
+                        <strong>komatsu poclain</strong> avec <strong>chauffeur poclain</strong> au meilleur{' '}
+                        <strong>poclain prix maroc</strong>)
+                      </>
                     )}{' '}
                     <strong>{activeCity.locative}</strong> ({activeCity.region}), nos équipes couvrent{' '}
                     {activeCity.industrialNote}, ainsi que les axes menant vers{' '}
@@ -272,6 +280,13 @@ export default function App({ initialPath }: AppProps) {
                         {' '}
                         de <strong>location trax</strong> et <strong>location trax maroc</strong>
                       </>
+                    )}
+                    {activeMachine.slug === 'location-poclain' && (
+                      <>
+                        {' '}
+                        de <strong>poclain</strong> et <strong>poclain machine</strong> (<strong>poclain cat</strong>,{' '}
+                        <strong>komatsu poclain</strong> avec <strong>chauffeur poclain</strong>)
+                      </>
                     )}{' '}
                     couvre l'ensemble du corridor stratégique{' '}
                     <strong>
@@ -279,6 +294,21 @@ export default function App({ initialPath }: AppProps) {
                     </strong>
                     . Sélectionnez votre ville ou province ci-dessous pour accéder aux disponibilités locales immédiates.
                   </p>
+                )}
+
+                {activeMachine.slug === 'location-poclain' && (
+                  <div className="bg-amber-50/60 p-5 rounded-xl border border-amber-200 mb-6">
+                    <h3 className="text-lg md:text-xl font-extrabold text-gray-900 mb-2">
+                      Pourquoi louer une poclain cat ou komatsu poclain avec chauffeur poclain ?
+                    </h3>
+                    <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                      Que vous compariez le tarif d'une <strong>poclain a vendre maroc</strong> ou que vous consultiez des
+                      annonces sur <strong>avito poclain</strong>, la location directe d'une{' '}
+                      <strong>poclain machine</strong> (<strong>poclain cat</strong> ou <strong>komatsu poclain</strong>)
+                      avec un <strong>chauffeur poclain</strong> expérimenté vous assure une maîtrise totale de votre{' '}
+                      <strong>poclain prix maroc</strong> sans frais cachés d'entretien ni d'immobilisation{activeCity ? ` ${activeCity.locative}` : ''}.
+                    </p>
+                  </div>
                 )}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -568,11 +598,11 @@ export default function App({ initialPath }: AppProps) {
                   onClick={navigate('/location-poclain')}
                   className="hover:text-yellow-600 transition-colors"
                 >
-                  Location Poclain, Caterpillar et Pelles Hydrauliques
+                  Location Poclain et Poclain Machine au Maroc : Tarifs et Disponibilité
                 </a>
               </h2>
               <p className="leading-relaxed text-gray-600 mb-4">
-                Votre partenaire en <strong>location poclain</strong> et <strong>location poclain maroc</strong> : pelles mécaniques hydrauliques sur chenilles ou sur pneus de type <strong>poclain caterpillar</strong> et <strong>caterpillar poclain</strong> (14 à 30 tonnes) équipées de godet de terrassement, godet de curage ou marteau brise-roche (BRH) pour le gros œuvre, l'excavation profonde et l'extraction (كراء بوكلان).
+                Vous cherchez les meilleures offres de location de <strong>poclain</strong>, <strong>poclain machine</strong>, <strong>poclain cat</strong>, ou <strong>komatsu poclain</strong> au meilleur <strong>poclain prix maroc</strong> ? Nous mettons à votre disposition des engins récents avec <strong>chauffeur poclain</strong> qualifié pour tous vos chantiers (كراء بوكلان), offrant une solution immédiate et fiable face aux recherches de <strong>poclain a vendre maroc</strong> ou d'annonces sur <strong>avito poclain</strong>.
               </p>
               <div className="flex flex-wrap gap-1.5 mb-6">
                 {CITIES.map((c) => (
